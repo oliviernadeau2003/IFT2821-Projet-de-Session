@@ -1,0 +1,2 @@
+-- Olivier Nadeau, 
+-- Définition de la base en LDD et LMD de SQL server/ORACLE

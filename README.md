@@ -5,7 +5,7 @@
 
 - Olivier Nadeau
 - Yonah Lahlou
-- 
+- Ahmadou Ayande
 - 
 
 ---

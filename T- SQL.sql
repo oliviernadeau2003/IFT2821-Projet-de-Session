@@ -1,2 +1,2 @@
--- Olivier Nadeau, 
+-- Olivier Nadeau, Yonah Lahlou, ...
 -- Ensemble des triggers/curseurs/procédures en Transact-SQL ou PL/SQL

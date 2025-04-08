@@ -4,7 +4,7 @@
 #### Membres :
 
 - Olivier Nadeau
-- 
+- Yonah Lahlou
 - 
 - 
 

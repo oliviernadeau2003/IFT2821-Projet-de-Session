@@ -8,6 +8,7 @@ USE Projet_Session_Centre_Aide;
 -- Création des tables :
 
 DROP TABLE IF EXISTS Intervention;
+DROP TABLE IF EXISTS Plainte;
 DROP TABLE IF EXISTS Secteur;
 DROP TABLE IF EXISTS Usager;
 DROP TABLE IF EXISTS Equipe;
@@ -17,6 +18,7 @@ CREATE TABLE Usager();
 CREATE TABLE Benevole();
 CREATE TABLE Equipe();
 CREATE TABLE Secteur();
+CREATE TABLE Plainte();
 CREATE TABLE Intervention();
 
 
@@ -35,4 +37,7 @@ INSERT INTO Equipe VALUES
 ()
 
 INSERT INTO Intervention VALUES
+()
+
+INSERT INTO Plainte VALUES
 ()

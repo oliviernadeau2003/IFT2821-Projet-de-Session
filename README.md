@@ -70,7 +70,7 @@
 ---
 
 ## 4. Transact-SQL (15%)
-- Implantation d'au moins un déclencheur, une procédure stockée, une fonction et un curseur  
+- Implantation d'au moins un déclencheur, une procédure stockée, une fonction stockée  
 - Pertinence et efficacité des scripts T-SQL  
 
 ---

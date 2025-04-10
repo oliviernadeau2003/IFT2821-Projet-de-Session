@@ -25,7 +25,7 @@ CREATE TABLE Usager(
     nom VARCHAR(25) NOT NULL,
     prenom VARCHAR(25) NOT NULL,
     telephone VARCHAR(10) NOT NULL CHECK (LEN(telephone) = 10 AND telephone NOT LIKE '%[^0-9]%'),
-    courriel VARCHAR(50) NOT NULL CHECK (email LIKE '_%@_%._%'),
+    courriel VARCHAR(50) NOT NULL CHECK (courriel LIKE '_%@_%._%'),
     adresse VARCHAR(50) NOT NULL,
     id_secteur INT,
     CONSTRAINT pk_usager_id PRIMARY KEY (id),
@@ -37,9 +37,9 @@ CREATE TABLE Benevole(
     nom VARCHAR(25) NOT NULL,
     prenom VARCHAR(25) NOT NULL,
     telephone VARCHAR(10) NOT NULL CHECK (LEN(telephone) = 10 AND telephone NOT LIKE '%[^0-9]%'),
-    courriel VARCHAR(50) NOT NULL CHECK (email LIKE '_%@_%._%'),
+    courriel VARCHAR(50) NOT NULL CHECK (courriel LIKE '_%@_%._%'),
     adresse VARCHAR(50) NOT NULL,
-    possede_voiture BOOLEAN NOT NULL,
+    possede_voiture BIT NOT NULL,
     id_secteur INT,
     CONSTRAINT pk_benevole_id PRIMARY KEY (id),
     CONSTRAINT fk_benevole_id_secteur FOREIGN KEY (id_secteur) REFERENCES Secteur(id)
@@ -47,7 +47,7 @@ CREATE TABLE Benevole(
 
 CREATE TABLE Equipe(
     id INT,
-    est_disponible BOOLEAN NOT NULL,
+    est_disponible BIT NOT NULL,
     id_benevole_1 INT,
     id_benevole_2 INT,
     id_secteur INT,

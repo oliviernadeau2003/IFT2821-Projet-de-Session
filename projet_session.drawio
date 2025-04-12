@@ -10,7 +10,7 @@
         <mxCell id="JO7mMctXThJsMqSaezbj-2" value="Bénévole" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;" parent="1" vertex="1">
           <mxGeometry x="649" y="90" width="120" height="60" as="geometry" />
         </mxCell>
-        <mxCell id="JO7mMctXThJsMqSaezbj-3" value="Équipe" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;" parent="1" vertex="1">
+        <mxCell id="JO7mMctXThJsMqSaezbj-3" value="Unite" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;" parent="1" vertex="1">
           <mxGeometry x="865" y="350" width="120" height="60" as="geometry" />
         </mxCell>
         <mxCell id="JO7mMctXThJsMqSaezbj-4" value="Intervention" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;" parent="1" vertex="1">

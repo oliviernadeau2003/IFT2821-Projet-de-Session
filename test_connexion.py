@@ -15,9 +15,9 @@ try:
         "Connection Timeout=30;"                    # Timeout plus long
     )
 
-    print("Tentative de connexion...")
+    print("\nTentative de connexion...")
     cnxn = pyodbc.connect(conn_str)     # Etablit la connexion
-    print("Connexion reussie!")
+    print("\nConnexion reussie!")
     curseur = cnxn.cursor()             # Curseur pour les requetes SQL
 
     # Verifier les bases de donnees existantes
@@ -45,4 +45,4 @@ finally:    # Fermer les ressources dans tous les cas
         curseur.close()     # Curseur existe - à fermer
     if 'cnxn' in locals():
         cnxn.close()        # Connexion existe - a fermer
-print("Fermeture du programme.")
+print("\nFermeture du programme.")

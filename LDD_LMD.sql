@@ -47,7 +47,7 @@ CREATE TABLE Benevole(
 
 CREATE TABLE Unite(
     id INT,
-    est_disponible BIT NOT NULL,
+    disponible BIT NOT NULL,
     id_benevole_1 INT NOT NULL,
     id_benevole_2 INT,
     id_secteur INT NOT NULL,

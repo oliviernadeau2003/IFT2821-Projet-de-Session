@@ -8,7 +8,7 @@ USE Projet_Session_Centre_Aide;
 
 DROP TABLE IF EXISTS Plainte;
 DROP TABLE IF EXISTS Intervention;
-DROP TABLE IF EXISTS Equipe;
+DROP TABLE IF EXISTS Unite;
 DROP TABLE IF EXISTS Usager;
 DROP TABLE IF EXISTS Benevole;
 DROP TABLE IF EXISTS Secteur;
@@ -40,21 +40,21 @@ CREATE TABLE Benevole(
     courriel VARCHAR(50) NOT NULL CHECK (courriel LIKE '_%@_%._%'),
     adresse VARCHAR(50) NOT NULL,
     possede_voiture BIT NOT NULL,
-    id_secteur INT,
+    id_secteur INT NOT NULL,
     CONSTRAINT pk_benevole_id PRIMARY KEY (id),
     CONSTRAINT fk_benevole_id_secteur FOREIGN KEY (id_secteur) REFERENCES Secteur(id)
 );
 
-CREATE TABLE Equipe(
+CREATE TABLE Unite(
     id INT,
     est_disponible BIT NOT NULL,
-    id_benevole_1 INT,
+    id_benevole_1 INT NOT NULL,
     id_benevole_2 INT,
-    id_secteur INT,
-    CONSTRAINT pk_equipe_id PRIMARY KEY (id),
-    CONSTRAINT fk_equipe_id_benevole_1 FOREIGN KEY (id_benevole_1) REFERENCES Benevole(id),
-    CONSTRAINT fk_equipe_id_benevole_2 FOREIGN KEY (id_benevole_2) REFERENCES Benevole(id),
-    CONSTRAINT fk_equipe_id_secteur FOREIGN KEY (id_secteur) REFERENCES Secteur(id)
+    id_secteur INT NOT NULL,
+    CONSTRAINT pk_unite_id PRIMARY KEY (id),
+    CONSTRAINT fk_unite_id_benevole_1 FOREIGN KEY (id_benevole_1) REFERENCES Benevole(id),
+    CONSTRAINT fk_unite_id_benevole_2 FOREIGN KEY (id_benevole_2) REFERENCES Benevole(id),
+    CONSTRAINT fk_unite_id_secteur FOREIGN KEY (id_secteur) REFERENCES Secteur(id)
 );
 
 CREATE TABLE Intervention(
@@ -64,11 +64,11 @@ CREATE TABLE Intervention(
     type_aide VARCHAR(50) NOT NULL,
     status VARCHAR(50) NOT NULL,
     id_usager INT,
-    id_equipe INT,
+    id_unite INT,
     id_secteur INT,
     CONSTRAINT pk_intervention_id PRIMARY KEY (id),
     CONSTRAINT fk_intervention_id_usager FOREIGN KEY (id_usager) REFERENCES Usager(id),
-    CONSTRAINT fk_intervention_id_equipe FOREIGN KEY (id_equipe) REFERENCES Equipe(id),
+    CONSTRAINT fk_intervention_id_unite FOREIGN KEY (id_unite) REFERENCES Unite(id),
     CONSTRAINT fk_intervention_id_secteur FOREIGN KEY (id_secteur) REFERENCES Secteur(id)
 );
 
@@ -83,24 +83,6 @@ CREATE TABLE Plainte(
 
 
 -- Insertion des données : 
-
-INSERT INTO Secteur VALUES
-()
-
-INSERT INTO Usager VALUES
-()
-
-INSERT INTO Benevole VALUES
-()
-
-INSERT INTO Equipe VALUES
-()
-
-INSERT INTO Intervention VALUES
-()
-
-INSERT INTO Plainte VALUES
-()
 
 INSERT INTO Secteur VALUES
 (1, 'Secteur 1'),
@@ -213,7 +195,7 @@ INSERT INTO Benevole VALUES
 (49, 'Faure', 'Sophie', '2136825242', 'sophie.faure@hotmail.com', '57 rue Exemple', 1, 5),
 (50, 'Moreau', 'Claire', '7709335809', 'claire.moreau@gmail.com', '98 rue Exemple', 1, 1);
 
-INSERT INTO Equipe VALUES
+INSERT INTO Unite VALUES
 (1, 0, 21, 40, 5),
 (2, 0, 31, 10, 4),
 (3, 1, 4, 27, 1),

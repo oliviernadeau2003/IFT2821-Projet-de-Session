@@ -62,7 +62,7 @@ CREATE TABLE Intervention(
     date_demande DATETIME NOT NULL,
     date_intervention DATETIME NOT NULL,
     type_aide VARCHAR(50) NOT NULL,
-    status VARCHAR(50) NOT NULL,
+    statut VARCHAR(50) NOT NULL,
     id_usager INT,
     id_unite INT,
     id_secteur INT,

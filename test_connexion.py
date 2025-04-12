@@ -10,19 +10,3 @@ conn_str = (
     "PWD=YourStrongPassword;"
 )
 cnxn = pyodbc.connect(conn_str)
-
-try:
-    # Establish connection
-    conn = pyodbc.connect(conn_str)
-    cursor = conn.cursor()
-    
-    # Test query
-    cursor.execute("SELECT @@VERSION")
-    row = cursor.fetchone()
-    print(f"Connection successful! SQL Server version: {row[0]}")
-    
-    # Close connections
-    cursor.close()
-    conn.close()
-except Exception as e:
-    print(f"Connection failed: {str(e)}")

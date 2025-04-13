@@ -4,26 +4,27 @@
         -- Implantation d'au moins un déclencheur, une procédure stockée, une fonction
 
             -- Declencheur-----------------------------------------
-CREATE TRIGGER TR_VerifierVoitureDansEquipe
-ON Equipe
+CREATE TRIGGER VerifierTelephoneUsager
+ON Usager
 AFTER INSERT, UPDATE
 AS
 BEGIN
-    IF EXISTS (
-        SELECT e.id
-        FROM inserted e
-        LEFT JOIN Benevole b1 ON e.id_benevole_1 = b1.id
-        LEFT JOIN Benevole b2 ON e.id_benevole_2 = b2.id
-        WHERE (b1.possede_voiture = 0 OR b1.possede_voiture IS NULL)
-          AND (b2.possede_voiture = 0 OR b2.possede_voiture IS NULL)
-    )
+    IF UPDATE(telephone) OR EXISTS (SELECT * FROM inserted WHERE telephone IS NOT NULL)
     BEGIN
-        ROLLBACK TRANSACTION
-        RAISERROR('Chaque équipe doit avoir au moins un bénévole avec voiture', 16, 1)
-        RETURN
+        IF EXISTS (
+            SELECT *
+            FROM inserted
+            WHERE telephone IS NOT NULL
+            AND (LEN(telephone) <> 10 OR telephone LIKE '%[^0-9]%')
+        )
+        BEGIN
+            RAISERROR('Numéro de téléphone invalide. Doit être 10 chiffres sans espaces', 16, 1)
+            ROLLBACK TRANSACTION
+        END
     END
-END;
-GO
+END
+
+go
 
 
 

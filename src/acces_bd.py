@@ -14,7 +14,7 @@ CONFIG_BD = (
     "Connection Timeout=60;"                   
 )
 
-# Établit et retourne une connexion à la bd et curseur pyodbc
+# Etablit et retourne une connexion a la bd et curseur pyodbc
 # Gestion d'erreurs avec blocs try/except
 def get_connexion():
     conn_str = (

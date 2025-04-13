@@ -4,33 +4,26 @@ import sys
 
 
 CONFIG_BD = (
-    "Driver=ODBC Driver 17 for SQL Server;"    
-    "Server=127.0.0.1,1433;"                   
-    "Database=LDD_LMD;"                        # Nom de votre BD
-    "Encrypt=yes;"                             
-    "TrustServerCertificate=yes;"              
-    "UID=sa;"                                  
-    "PWD=YourStrongPassword123!;"              
-    "Connection Timeout=60;"                   
+    "Driver=ODBC Driver 17 for SQL Server;"
+    "Server=127.0.0.1,1433;"
+    "Database=Projet_Centre_Aide;"
+    "Encrypt=yes;"
+    "TrustServerCertificate=yes;"
+    "UID=sa;"
+    "PWD=YourStrongPassword123!;"
+    "Connection Timeout=60;"
 )
 
 # Etablit et retourne une connexion a la bd et curseur pyodbc
-# Gestion d'erreurs avec blocs try/except
 def get_connexion():
-    conn_str = (
-        f"DRIVER={CONFIG_BD['driver']};"
-        f"SERVER={CONFIG_BD['server']};"
-        f"DATABASE={CONFIG_BD['database']};"
-    )
-
     try:
-        connection = pyodbc.connect(conn_str)
+        connection = pyodbc.connect(CONFIG_BD)
         cursor = connection.cursor()
-        print(f"Connexion reussie a la base {CONFIG_BD['database']} sur {CONFIG_BD['server']}")
+        print(f"Connexion reussie a la base de donnees Projet_Centre_Aide")
         return connection, cursor
 
     except pyodbc.Error as ex:
-        sqlstate = ex.args[0]
-        print(f"Erreur de connexion a la base de données : {sqlstate}")
+        sqlstate = ex.args[0] if len(ex.args) > 0 else 'Unknown'
+        print(f"Erreur de connexion a la base de donnees : {sqlstate}")
         print(ex)
-        sys.exit(1) # Quitte le programme si la connexion echoue
+        sys.exit(1) # Quitter le programme si la connexion echoue

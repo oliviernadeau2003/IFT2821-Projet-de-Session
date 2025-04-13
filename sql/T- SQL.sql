@@ -1,9 +1,6 @@
---  4. Transact-SQL (15%)
+--Transact-SQL : Implementation d'au moins un declencheur, une procedure stockee, une fonction
 
-
-        -- Implantation d'au moins un déclencheur, une procédure stockée, une fonction
-
-            -- Declencheur------------------------------------------
+-- Declencheur -- 
 CREATE TRIGGER VerifierTelephoneUsager
 ON Usager
 AFTER INSERT, UPDATE
@@ -26,7 +23,7 @@ END
 
 GO
 
-            -- une procédure stockée---------------------------------------------------
+-- Procedure stockee -- 
 CREATE PROCEDURE InsererUsager
     @id INT,
     @nom VARCHAR(25),
@@ -43,7 +40,7 @@ CREATE PROCEDURE InsererUsager
             END; 
 GO 
 
-            -- une fonction------------------------------------------------
+-- Fonction -- 
 CREATE FUNCTION NombreInterventionsParMois 
 (
     @Annee INT,

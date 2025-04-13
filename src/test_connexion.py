@@ -27,6 +27,27 @@ try:
     for db in databases:
         print(f"- {db}")
 
+# Test de connexion a la base Projet_Centre_Aide si elle existe
+    if 'Projet_Centre_Aide' in databases:
+        print("\nTentative de connexion a Projet_Centre_Aide...")
+        cnxn.close()  # Ferme la connexion actuelle
+        
+        config_projet = (
+            "Driver={ODBC Driver 17 for SQL Server};"
+            "Server=127.0.0.1,1433;"
+            "Database=Projet_Centre_Aide;"
+            "Encrypt=yes;"
+            "TrustServerCertificate=yes;"
+            "UID=sa;"
+            "PWD=YourStrongPassword123!;"
+            "Connection Timeout=30;"
+        )
+        
+        cnxn = pyodbc.connect(config_projet)
+        print("Connexion a Projet_Centre_Aide reussie!")
+    else:
+        print("\nLa base Projet_Centre_Aide n'existe pas encore. Executez creer_bd.py pour la creer.")
+
 except pyodbc.Error as ex:
     # Gestion des erreurs de connexion a la base de donnees
     print("\nErreur de connexion a la base de donnees:")

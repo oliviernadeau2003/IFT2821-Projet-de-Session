@@ -68,4 +68,3 @@ BEGIN
     RETURN @NombreInterventions;
 END;
 GO 
-

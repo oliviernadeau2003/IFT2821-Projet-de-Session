@@ -80,7 +80,7 @@ LEFT JOIN Benevole AS BenevoleSecondaire ON Equipe.id_benevole_2 = BenevoleSecon
 
     --r3  -----------------------------------------------------------
     /* Pour chaque intervention effectuée par une équipe de type « preformee », 
-        afficherl'identifiant et la date de l'intervention, le nom de l'usager, le secteur d'affectation de l'équipe
+        afficher l'identifiant et la date de l'intervention, le nom de l'usager, le secteur d'affectation de l'équipe
         et le statut de disponibilité  */
         
 SELECT Intervention.id AS id_intervention,

@@ -5,14 +5,13 @@ from src.acces_bd import get_connexion # Importe la fonction du fichier acces_bd
 def afficher_les_usagers():
     # Recupere et affiche la liste de tous les usagers
     conn, cursor = None, None # Initialisation pour le bloc finally
-    
     try:
         conn, cursor = get_connexion()
         sql_query = "SELECT id, nom, prenom FROM Usager"
         cursor.execute(sql_query)
         resultats = cursor.fetchall() # Recupere toutes les lignes
         return resultats
-    
+
     except pyodbc.Error as ex:
         print(f"Erreur lors de la recuperation des clients: {ex}")
         return [] # Retourne une liste vide en cas d'erreur
@@ -85,9 +84,11 @@ def appeler_fonction_exemple(parametre_id): # Exemple pour une fonction UDF
             return resultat.ResultatFonction # Acces par nom de colonne alias
         else:
             return None
+    
     except pyodbc.Error as ex:
         print(f"Erreur lors de l'appel de la fonction: {ex}")
         return None
+
     finally:
         if cursor:
             cursor.close()

@@ -50,7 +50,7 @@ GO
 
 
             -- une fonction------------------------------------------------
-CREATE FUNCTION fn_NombreInterventionsParMois 
+CREATE FUNCTION NombreInterventionsParMois 
 (
     @Annee INT,
     @Mois INT

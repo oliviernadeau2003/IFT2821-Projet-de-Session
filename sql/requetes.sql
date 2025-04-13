@@ -10,12 +10,12 @@ SELECT *
 FROM Benevole
 WHERE possede_voiture = 1;
 
---R1.3 : Afficher toutes les interventions dont le statut est « Termine ».
+--R1.3 : Afficher toutes les interventions dont le statut est "Termine".
 SELECT *
 FROM Intervention
 WHERE status = 'Termine';
 
---R1.4 : Afficher toutes les plaintes dont le statut est « Ouvert ».
+--R1.4 : Afficher toutes les plaintes dont le statut est "Ouvert".
 SELECT *
 FROM Plainte
 WHERE statut = 'Ouvert';
@@ -38,7 +38,7 @@ JOIN Secteur AS SecteurUsager ON Usager.id_secteur = SecteurUsager.id
 JOIN Secteur AS SecteurEquipe ON Equipe.id_secteur = SecteurEquipe.id
 WHERE SecteurUsager.id <> SecteurEquipe.id;
 
---R2.2 Pour chaque intervention : 
+--R2.2 Pour chaque intervention :
     -- Afficher l'identifiant de l'intervention, la date d'intervention, le nom de l'usager, le secteur auquel l'usager appartient et les noms des benevoles intervenants (le benevole principal et, le cas echeant, le second).
 SELECT Intervention.id AS id_intervention,
        Intervention.date_intervention,
@@ -53,8 +53,8 @@ JOIN Equipe ON Intervention.id_equipe = Equipe.id
 JOIN Benevole AS BenevolePrincipal ON Equipe.id_benevole_1 = BenevolePrincipal.id
 LEFT JOIN Benevole AS BenevoleSecondaire ON Equipe.id_benevole_2 = BenevoleSecondaire.id;
 
---R2.3 Pour chaque intervention effectuee par une equipe de type « preformee » :
-    -- Afficher l'identifiant et la date de l'intervention, le nom de l'usager, le secteur d'affectation de l'equipe et le statut de disponibilie.
+--R2.3 Pour chaque intervention effectuee par une equipe de type "preformee" :
+    -- Afficher l'identifiant et la date de l'intervention, le nom de l'usager, le secteur d'affectation de l'equipe et le statut de disponibilite.
 SELECT Intervention.id AS id_intervention,
        Intervention.date_intervention,
        Usager.nom AS nom_usager,
@@ -67,7 +67,7 @@ JOIN Equipe ON Intervention.id_equipe = Equipe.id
 JOIN Secteur AS SecteurEquipe ON Equipe.id_secteur = SecteurEquipe.id
 WHERE Equipe.type_equipe = 'preformee';
 
---R2.4 Pour chaque plainte en statut « Ouvert » :
+--R2.4 Pour chaque plainte en statut "Ouvert" :
     -- Afficher l'identifiant et le type de la plainte, la date de signalement, l'identifiant de l'intervention associee, le nom de l'usager ayant demande l'intervention et le secteur auquel cet usager appartient.
 SELECT Plainte.id AS id_plainte,
        Plainte.type AS type_plainte,

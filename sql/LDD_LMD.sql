@@ -4,7 +4,7 @@
 CREATE DATABASE Projet_Centre_Aide;
 USE Projet_Centre_Aide;
 
--- Création des tables :
+-- Creation des tables :
 
 DROP TABLE IF EXISTS Plainte;
 DROP TABLE IF EXISTS Intervention;
@@ -94,6 +94,6 @@ CREATE TABLE Plainte(
 );
 
 
--- Insertion des données : 
+-- Insertion des donnees :
 
 

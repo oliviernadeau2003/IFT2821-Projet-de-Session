@@ -25,7 +25,7 @@ CREATE TABLE Usager(
     id INT,
     nom VARCHAR(25) NOT NULL,
     prenom VARCHAR(25) NOT NULL,
-    telephone VARCHAR(10) NOT NULL CHECK (LEN(telephone) = 10 AND telephone NOT LIKE '%[^0-9]%'),
+    telephone VARCHAR(10) NOT NULL,
     courriel VARCHAR(50) NOT NULL CHECK (courriel LIKE '_%@_%._%'),
     adresse VARCHAR(50) NOT NULL,
     id_secteur INT,

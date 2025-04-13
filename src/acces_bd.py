@@ -31,8 +31,6 @@ def get_connexion():
 
     except pyodbc.Error as ex:
         sqlstate = ex.args[0]
-        print(f"Erreur de connexion à la base de données : {sqlstate}")
+        print(f"Erreur de connexion a la base de données : {sqlstate}")
         print(ex)
-        print("Vérifiez les paramètres dans acces_bd.py (serveur, base, driver, authentification).")
-        print("Assurez-vous que le service SQL Server est démarré.")
-        sys.exit(1) # Quitte le programme si la connexion échoue
+        sys.exit(1) # Quitte le programme si la connexion echoue

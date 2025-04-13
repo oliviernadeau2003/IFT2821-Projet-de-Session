@@ -24,10 +24,7 @@ BEGIN
     END
 END
 
-go
-
-
-
+GO
 
             -- une procédure stockée---------------------------------------------------
 CREATE PROCEDURE InsererUsager
@@ -45,9 +42,6 @@ CREATE PROCEDURE InsererUsager
                 VALUES (@id, @nom, @prenom, @telephone, @courriel, @adresse, @id_secteur);
             END; 
 GO 
-
-
-
 
             -- une fonction------------------------------------------------
 CREATE FUNCTION NombreInterventionsParMois 

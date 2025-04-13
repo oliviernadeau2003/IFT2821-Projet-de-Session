@@ -1,4 +1,4 @@
---Transact-SQL : Implementation d'au moins un declencheur, une procedure stockee, une fonction
+--Transact-SQL : Implementation d'au moins un declencheur, une procedure stockee et une fonction
 
 -- Declencheur -- 
 CREATE TRIGGER VerifierTelephoneUsager

@@ -1,5 +1,5 @@
 # main.py
-import operations_bd # Importe les fonctions definies dans operations_bd.py
+import src.operations_bd as operations_bd # Importe les fonctions definies dans operations_bd.py
 
 def afficher_menu():
     # Affiche les options disponibles a l'utilisateur A CHANGER

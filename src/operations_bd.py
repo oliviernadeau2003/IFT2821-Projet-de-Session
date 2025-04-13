@@ -1,6 +1,6 @@
 # operations_bd.py
 import pyodbc
-from acces_bd import get_connexion # Importe la fonction du fichier acces_bd.py
+from src.acces_bd import get_connexion # Importe la fonction du fichier acces_bd.py
 
 def lister_les_usagers():
     # Recupere et retourne la liste de tous les usagers

@@ -8,23 +8,17 @@
 SELECT *
 FROM Usager;
 
-
-
 --R2----------------------------------------
 --Afficher tous les bénévoles pour lesquels la colonne possede_voiture est vraie 
 SELECT *
 FROM Benevole
 WHERE possede_voiture = 1;
 
-
-
 --R3-----------------------------------------
 --Afficher toutes les interventions dont le statut est « Terminé »
 SELECT *
 FROM Intervention
 WHERE status = 'Terminé';
-
-
 
 --R4-----------------------------------------
 --Afficher toutes les plaintes dont le statut est « Ouvert »
@@ -38,11 +32,6 @@ WHERE statut = 'Ouvert';
 SELECT id, nom, prenom, telephone, courriel, adresse, id_secteur
 FROM Usager
 ORDER BY nom;
-
-
-
-
-
 
 -- Requêtes Complexes : 
 
@@ -79,9 +68,11 @@ LEFT JOIN Benevole AS BenevoleSecondaire ON Equipe.id_benevole_2 = BenevoleSecon
 
 
     --r3  -----------------------------------------------------------
-    /* Pour chaque intervention effectuée par une équipe de type « preformee », 
-        afficher l'identifiant et la date de l'intervention, le nom de l'usager, le secteur d'affectation de l'équipe
-        et le statut de disponibilité  */
+/* 
+    Pour chaque intervention effectuée par une équipe de type « preformee », 
+    afficherl'identifiant et la date de l'intervention, le nom de l'usager, le secteur d'affectation de l'équipe
+    et le statut de disponibilité  
+*/
         
 SELECT Intervention.id AS id_intervention,
        Intervention.date_intervention,

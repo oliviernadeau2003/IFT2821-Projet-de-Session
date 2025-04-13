@@ -3,7 +3,7 @@
 
         -- Implantation d'au moins un déclencheur, une procédure stockée, une fonction
 
-            -- Declencheur-----------------------------------------
+            -- Declencheur------------------------------------------
 CREATE TRIGGER VerifierTelephoneUsager
 ON Usager
 AFTER INSERT, UPDATE

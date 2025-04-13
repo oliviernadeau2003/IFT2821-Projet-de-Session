@@ -15,8 +15,23 @@ def ajouter_usagers_test():
         (8, "Bouchard", "Robert", "5148901234", "robert.bouchard@email.com", "654 Boulevard des Erables", 7),
         (9, "Gauthier", "Isabelle", "5149012345", "isabelle.gauthier@email.com", "987 Rue du Lac", 8),
         (10, "Bergeron", "Martin", "5140123456", "martin.bergeron@email.com", "345 Avenue du Mont", 9)
+        (11, "Sanchez", "Elena", "5141235001", "elena.sanchez@email.com", "118 Calle Principal", 1),
+        (12, "Wong", "Liu", "5141235002", "liu.wong@email.com", "229 Canton Road", 2),
+        (13, "Lambert", "Monique", "5141235003", "monique.lambert@email.com", "330 Rue des Pins", 3),
+        (14, "Johnson", "David", "5141235004", "david.johnson@email.com", "441 Oak Street", 4),
+        (15, "Weber", "Klaus", "5141235005", "klaus.weber@email.com", "552 Berliner Strasse", 5),
+        (16, "Conti", "Maria", "5141235006", "maria.conti@email.com", "663 Via Venezia", 6),
+        (17, "Jung", "Min-Ho", "5141235007", "minho.jung@email.com", "774 Seoul Street", 7),
+        (18, "Lopez", "Javier", "5141235008", "javier.lopez@email.com", "885 Plaza Mayor", 8),
+        (19, "Kapoor", "Deepa", "5141235009", "deepa.kapoor@email.com", "996 Mumbai Road", 9),
+        (20, "Yamamoto", "Kenji", "5141235010", "kenji.yamamoto@email.com", "110 Kyoto Avenue", 10),
+        (21, "Khalil", "Omar", "5141235011", "omar.khalil@email.com", "221 Cairo Street", 11),
+        (22, "Popov", "Alexei", "5141235012", "alexei.popov@email.com", "332 Red Square", 12),
+        (23, "Svensson", "Elsa", "5141235013", "elsa.svensson@email.com", "443 Nordic Way", 13),
+        (24, "Rodriguez", "Sofia", "5141235014", "sofia.rodriguez@email.com", "554 Havana Boulevard", 14),
+        (25, "Papas", "Dimitri", "5141235015", "dimitri.papas@email.com", "665 Athens Street", 15),
     ]
-    
+
     # Verifie d'abord que la connexion fonctionne
     try:
         conn, cursor = get_connexion()

@@ -2,8 +2,8 @@
 import pyodbc
 from src.acces_bd import get_connexion # Importe la fonction du fichier acces_bd.py
 
-def lister_les_usagers():
-    # Recupere et retourne la liste de tous les usagers
+def afficher_les_usagers():
+    # Recupere et affiche la liste de tous les usagers
     conn, cursor = None, None # Initialisation pour le bloc finally
     
     try:

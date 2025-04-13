@@ -15,7 +15,7 @@ BEGIN
             AND (LEN(telephone) <> 10 OR telephone LIKE '%[^0-9]%')
         )
         BEGIN
-            RAISERROR('Numéro de téléphone invalide. Doit être 10 chiffres sans espaces', 16, 1)
+            RAISERROR('Numero de telephone invalide. Doit être 10 chiffres sans espaces', 16, 1)
             ROLLBACK TRANSACTION
         END
     END

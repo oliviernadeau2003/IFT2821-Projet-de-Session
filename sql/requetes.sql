@@ -5,7 +5,7 @@
 SELECT *
 FROM Usager;
 
---R1.2 : Afficher tous les benevoles pour lesquels la colonne possede_voiture est vraie 
+--R1.2 : Afficher tous les benevoles pour lesquels la colonne possede_voiture est vraie
 SELECT *
 FROM Benevole
 WHERE possede_voiture = 1;

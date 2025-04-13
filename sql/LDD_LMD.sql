@@ -76,7 +76,7 @@ CREATE TABLE Intervention(
     CONSTRAINT fk_intervention_id_usager FOREIGN KEY (id_usager) REFERENCES Usager(id),
     CONSTRAINT fk_intervention_id_equipe FOREIGN KEY (id_equipe) REFERENCES Equipe(id),
     CONSTRAINT fk_intervention_id_secteur FOREIGN KEY (id_secteur) REFERENCES Secteur(id),
-    CONSTRAINT CHK_Status CHECK (status IN ('Pas encore commencé', 'En cours', 'Terminé', 'Annulé'))
+    CONSTRAINT CHK_Status CHECK (status IN ('Pas encore commence', 'En cours', 'Termine', 'Annule'))
 );
 
 CREATE TABLE Plainte(
@@ -90,7 +90,7 @@ CREATE TABLE Plainte(
     id_intervention INT,
     CONSTRAINT pk_plainte_id PRIMARY KEY (id),
     CONSTRAINT fk_plainte_id_intervention FOREIGN KEY (id_intervention) REFERENCES Intervention(id),
-    CONSTRAINT CHK_Statut_Plainte CHECK (statut IN ('Ouvert', 'En traitement', 'Résolu', 'Fermé'))
+    CONSTRAINT CHK_Statut_Plainte CHECK (statut IN ('Ouvert', 'En traitement', 'Resolu', 'Ferme'))
 );
 
 

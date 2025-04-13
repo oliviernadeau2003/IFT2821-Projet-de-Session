@@ -95,5 +95,62 @@ CREATE TABLE Plainte(
 
 
 -- Insertion des donnees :
+-- Insertion des donnees:
 
+-- Insertion des secteurs
+INSERT INTO Secteur (id, nom) VALUES (1, 'Centre-Ville');
+INSERT INTO Secteur (id, nom) VALUES (2, 'Quartier Nord');
+INSERT INTO Secteur (id, nom) VALUES (3, 'Quartier Sud');
+INSERT INTO Secteur (id, nom) VALUES (4, 'Banlieue Est');
+INSERT INTO Secteur (id, nom) VALUES (5, 'Banlieue Ouest');
+INSERT INTO Secteur (id, nom) VALUES (6, 'Vieux-Port');
+INSERT INTO Secteur (id, nom) VALUES (7, 'Zone Industrielle');
+INSERT INTO Secteur (id, nom) VALUES (8, 'Campus Universitaire');
+INSERT INTO Secteur (id, nom) VALUES (9, 'District Financier');
+INSERT INTO Secteur (id, nom) VALUES (10, 'Zone Commerciale');
 
+-- Insertion des benevoles
+INSERT INTO Benevole (id, nom, prenom, telephone, courriel, adresse, possede_voiture, id_secteur) 
+VALUES (1, 'Martin', 'Julie', '4381234567', 'julie.martin@email.com', '890 Rue des Fleurs', 1, 2);
+INSERT INTO Benevole (id, nom, prenom, telephone, courriel, adresse, possede_voiture, id_secteur) 
+VALUES (2, 'Bouchard', 'Michel', '4382345678', 'michel.bouchard@email.com', '123 Avenue des Pins', 1, 1);
+INSERT INTO Benevole (id, nom, prenom, telephone, courriel, adresse, possede_voiture, id_secteur) 
+VALUES (3, 'Cote', 'Caroline', '4383456789', 'caroline.cote@email.com', '456 Boulevard des Erables', 0, 3);
+INSERT INTO Benevole (id, nom, prenom, telephone, courriel, adresse, possede_voiture, id_secteur) 
+VALUES (4, 'Gauthier', 'Philippe', '4384567890', 'philippe.gauthier@email.com', '789 Rue du Lac', 1, 4);
+INSERT INTO Benevole (id, nom, prenom, telephone, courriel, adresse, possede_voiture, id_secteur) 
+VALUES (5, 'Bergeron', 'Sylvie', '4385678901', 'sylvie.bergeron@email.com', '234 Avenue du Mont', 0, 5);
+INSERT INTO Benevole (id, nom, prenom, telephone, courriel, adresse, possede_voiture, id_secteur) 
+VALUES (6, 'Tremblay', 'Richard', '4386789012', 'richard.tremblay@email.com', '567 Rue Principale', 1, 6);
+INSERT INTO Benevole (id, nom, prenom, telephone, courriel, adresse, possede_voiture, id_secteur) 
+VALUES (7, 'Lavoie', 'Nathalie', '4387890123', 'nathalie.lavoie@email.com', '890 Avenue Centrale', 0, 7);
+INSERT INTO Benevole (id, nom, prenom, telephone, courriel, adresse, possede_voiture, id_secteur) 
+VALUES (8, 'Gagnon', 'Robert', '4388901234', 'robert.gagnon@email.com', '123 Rue des Ormes', 1, 8);
+INSERT INTO Benevole (id, nom, prenom, telephone, courriel, adresse, possede_voiture, id_secteur) 
+VALUES (9, 'Morin', 'Christine', '4389012345', 'christine.morin@email.com', '456 Avenue du Parc', 0, 9);
+INSERT INTO Benevole (id, nom, prenom, telephone, courriel, adresse, possede_voiture, id_secteur) 
+VALUES (10, 'Fortin', 'Jean', '4380123456', 'jean.fortin@email.com', '789 Boulevard Principal', 1, 10);
+
+-- Insertion des equipes
+INSERT INTO Equipe (id, est_disponible, id_benevole_1, id_benevole_2, id_secteur, type_equipe)
+VALUES (1, 1, 1, 2, 1, 'preformee');
+INSERT INTO Equipe (id, est_disponible, id_benevole_1, id_benevole_2, id_secteur, type_equipe)
+VALUES (2, 1, 3, 4, 2, 'preformee');
+INSERT INTO Equipe (id, est_disponible, id_benevole_1, id_benevole_2, id_secteur, type_equipe)
+VALUES (3, 0, 5, NULL, 3, 'a_constituer');
+INSERT INTO Equipe (id, est_disponible, id_benevole_1, id_benevole_2, id_secteur, type_equipe)
+VALUES (4, 1, 2, 5, 4, 'preformee');
+INSERT INTO Equipe (id, est_disponible, id_benevole_1, id_benevole_2, id_secteur, type_equipe)
+VALUES (5, 0, 4, NULL, 5, 'a_constituer');
+INSERT INTO Equipe (id, est_disponible, id_benevole_1, id_benevole_2, id_secteur, type_equipe)
+VALUES (6, 1, 6, 7, 6, 'preformee');
+INSERT INTO Equipe (id, est_disponible, id_benevole_1, id_benevole_2, id_secteur, type_equipe)
+VALUES (7, 1, 8, 9, 7, 'preformee');
+INSERT INTO Equipe (id, est_disponible, id_benevole_1, id_benevole_2, id_secteur, type_equipe)
+VALUES (8, 0, 10, NULL, 8, 'a_constituer');
+INSERT INTO Equipe (id, est_disponible, id_benevole_1, id_benevole_2, id_secteur, type_equipe)
+VALUES (9, 1, 3, 8, 9, 'preformee');
+INSERT INTO Equipe (id, est_disponible, id_benevole_1, id_benevole_2, id_secteur, type_equipe)
+VALUES (10, 0, 7, NULL, 10, 'a_constituer');
+
+-- Note: Les usagers vont etre ajoutes avec la procedure T-SQL et le script ajout_usagers.py

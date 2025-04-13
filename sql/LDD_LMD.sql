@@ -1,8 +1,8 @@
 -- Olivier Nadeau, Yonah Lahlou, Ahmadou Ayande, ...
 -- Definition de la base en LDD et LMD de SQL server/ORACLE
 
-CREATE DATABASE Projet_Session_Centre_Aide;
-USE Projet_Session_Centre_Aide;
+CREATE DATABASE Projet_Centre_Aide;
+USE Projet_Centre_Aide;
 
 -- Création des tables :
 

@@ -3,7 +3,7 @@ import pyodbc
 from acces_bd import get_connexion # Importe la fonction du fichier acces_bd.py
 
 def lister_tous_les_usagers():
-# Recupere et retourne la liste de tous les usagers
+    # Recupere et retourne la liste de tous les usagers
     conn, cursor = None, None # Initialisation pour le bloc finally
     
     try:
@@ -24,7 +24,7 @@ def lister_tous_les_usagers():
             conn.close()
 
 def mettre_a_jour_nom_usager(id_usager, nouveau_nom):
-# Met a jour le nom d'un usage base sur son id
+    # Met a jour le nom d'un usage base sur son id
     conn, cursor = None, None
     try:
         conn, cursor = get_connexion()
@@ -45,26 +45,26 @@ def mettre_a_jour_nom_usager(id_usager, nouveau_nom):
         if conn:
             conn.close()
 
-def appeler_procedure_exemple(parametre1, parametre2): # Exemple pour une procédure stockée
-    """Appelle une procédure stockée 'NomDeVotreProcedure'."""
+def appeler_procedure_exemple(parametre1, parametre2):
+    # Appelle une procedure stockee 'NomDeProcedure'
     conn, cursor = None, None
     try:
         conn, cursor = get_connexion()
-        # Adaptez le nom de la procédure et les paramètres
-        sql_call = "{CALL NomDeVotreProcedure (?, ?)}" 
+        # Adaptez le nom de la procedure et les parametres
+        sql_call = "{CALL NomDeProcedure (?, ?)}" 
         cursor.execute(sql_call, parametre1, parametre2)
         
-        # Si la procédure retourne des résultats (SELECT à l'intérieur)
+        # Si la procedure retourne des resultats (SELECT e l'interieur)
         # results = cursor.fetchall() 
-        # Traitez les résultats ici si nécessaire
+        # Traitez les resultats ici si necessaire
 
-        conn.commit() # Si la procédure modifie des données
-        print("Procédure stockée exécutée.")
-        # return results # Si elle retourne des résultats
-        return True # Ou simplement un succès
+        conn.commit() # Si la procedure modifie des donnees
+        print("Procedure stockee executee.")
+        # return results # Si elle retourne des resultats
+        return True # Ou simplement un succes
     except pyodbc.Error as ex:
-        print(f"Erreur lors de l'appel de la procédure: {ex}")
-        # conn.rollback() # Si elle modifie des données
+        print(f"Erreur lors de l'appel de la procedure: {ex}")
+        # conn.rollback() # Si elle modifie des donnees
         return False
     finally:
         if cursor:
@@ -73,16 +73,16 @@ def appeler_procedure_exemple(parametre1, parametre2): # Exemple pour une procé
             conn.close()
 
 def appeler_fonction_exemple(parametre_id): # Exemple pour une fonction UDF
-    """Appelle une fonction 'dbo.ufnGetCusCode' et retourne le résultat."""
+    # Appelle une fonction 'dbo.ufnGetCusCode' et retourne le resultat
     conn, cursor = None, None
     try:
         conn, cursor = get_connexion()
-        # Adaptez le nom de la fonction et le paramètre
+        # Adaptez le nom de la fonction et le parametre
         sql_call = "SELECT dbo.ufnGetCusCode(?) AS ResultatFonction" 
         cursor.execute(sql_call, parametre_id)
-        resultat = cursor.fetchone() # Récupère la seule ligne/colonne attendue
+        resultat = cursor.fetchone() # Recupere la seule ligne/colonne attendue
         if resultat:
-            return resultat.ResultatFonction # Acces par nom de colonne aliasé
+            return resultat.ResultatFonction # Acces par nom de colonne alias
         else:
             return None
     except pyodbc.Error as ex:

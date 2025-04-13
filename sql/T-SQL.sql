@@ -42,20 +42,19 @@ GO
 
 -- Fonction -- 
 CREATE FUNCTION NombreInterventionsParMois 
-(
-    @Annee INT,
-    @Mois INT
-)
-RETURNS INT
-AS
-BEGIN
-    DECLARE @NombreInterventions INT;
-    
-    SELECT @NombreInterventions = COUNT(*)
-    FROM Intervention
-    WHERE YEAR(DateIntervention) = @Annee
-    AND MONTH(DateIntervention) = @Mois;
-    
-    RETURN @NombreInterventions;
-END;
-GO 
+    (
+        @Annee INT,
+        @Mois INT
+    )
+    RETURNS INT
+    AS
+    BEGIN
+        DECLARE @NombreInterventions INT;
+        
+        SELECT @NombreInterventions = COUNT(*)
+        FROM Intervention
+        WHERE YEAR(date_intervention) = @Annee
+        AND MONTH(date_intervention) = @Mois;
+        
+        RETURN @NombreInterventions;
+    END;

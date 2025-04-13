@@ -1,66 +1,38 @@
-# Script pour acceder aux donnees
+# access_bd.py
 import pyodbc
+import sys
 
-def connexion_bd():
+
+CONFIG_BD = (
+    "Driver=ODBC Driver 17 for SQL Server;"    
+    "Server=127.0.0.1,1433;"                   
+    "Database=LDD_LMD;"                        # Nom de votre BD
+    "Encrypt=yes;"                             
+    "TrustServerCertificate=yes;"              
+    "UID=sa;"                                  
+    "PWD=YourStrongPassword123!;"              
+    "Connection Timeout=60;"                   
+)
+
+# Établit et retourne une connexion à la bd et curseur pyodbc
+# Gestion d'erreurs avec blocs try/except
+def get_connexion():
     conn_str = (
-        "Driver=ODBC Driver 17 for SQL Server;"    
-        "Server=127.0.0.1,1433;"                   
-        "Database=LDD_LMD;"                        # Nom de votre BD
-        "Encrypt=yes;"                             
-        "TrustServerCertificate=yes;"              
-        "UID=sa;"                                  
-        "PWD=YourStrongPassword123!;"              
-        "Connection Timeout=60;"                   
+        f"DRIVER={CONFIG_BD['driver']};"
+        f"SERVER={CONFIG_BD['server']};"
+        f"DATABASE={CONFIG_BD['database']};"
     )
 
-    return pyodbc.connect(conn_str)
+    try:
+        connection = pyodbc.connect(conn_str)
+        cursor = connection.cursor()
+        print(f"Connexion reussie a la base {CONFIG_BD['database']} sur {CONFIG_BD['server']}")
+        return connection, cursor
 
-def afficher_tables():
-    # Affiche toutes les tables de la base de donnees
-    conn = connexion_bd()
-    cursor = conn.cursor()
-
-    cursor.execute("SELECT TABLE_NAME FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_TYPE = 'BASE TABLE'")
-
-    print("Tables dans la base de données:")
-    for row in cursor.fetchall():
-        print(f"- {row[0]}")
-
-    cursor.close()
-    conn.close()
-
-def afficher_secteurs():
-    conn = connexion_bd()
-    cursor = conn.cursor()
-    
-    cursor.execute("SELECT * FROM Secteur")
-    
-    print("\nListe des secteurs:")
-    for row in cursor.fetchall():
-        print(f"ID: {row.id}, Nom: {row.nom}")
-    
-    cursor.close()
-    conn.close()
-
-def afficher_benevoles():
-    conn = connexion_bd()
-    cursor = conn.cursor()
-    
-    cursor.execute("SELECT * FROM Benevole")
-    
-    print("\nListe des bénévoles:")
-    for row in cursor.fetchall():
-        print(f"ID: {row.id}, Nom: {row.nom}, Prénom: {row.prenom}")
-    
-    cursor.close()
-    conn.close()
-
-# Ajouter d'autres fonctions pour les autres tables
-
-if __name__ == "__main__":
-    # Afficher les tables disponibles
-    afficher_tables()
-    # Afficher les secteurs
-    afficher_secteurs()
-    # Afficher les benevoles
-    afficher_benevoles()
+    except pyodbc.Error as ex:
+        sqlstate = ex.args[0]
+        print(f"Erreur de connexion à la base de données : {sqlstate}")
+        print(ex)
+        print("Vérifiez les paramètres dans acces_bd.py (serveur, base, driver, authentification).")
+        print("Assurez-vous que le service SQL Server est démarré.")
+        sys.exit(1) # Quitte le programme si la connexion échoue

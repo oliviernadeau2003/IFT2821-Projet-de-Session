@@ -33,7 +33,7 @@ def lister_benevoles_avec_voiture():
         return resultats
 
     except pyodbc.Error as ex:
-        print(f"Erreur lors de la récupération des bénévoles: {ex}")
+        print(f"Erreur lors de la recuperation des benevoles: {ex}")
         return []
 
     finally:
@@ -77,7 +77,7 @@ def lister_plaintes_ouvertes():
         if conn: conn.close()
 
 def lister_usagers_par_nom():
-    # R1.5 : Affiche tous les d3tails des usagers, tries par ordre alphabetique de leur nom.
+    # R1.5 : Affiche tous les details des usagers, tries par ordre alphabetique de leur nom.
     conn, cursor = None, None
     try:
         conn, cursor = get_connexion()
@@ -122,7 +122,7 @@ def interventions_secteurs_differents():
         return resultats
 
     except pyodbc.Error as ex:
-        print(f"Erreur lors de l'execution de la requête complexe R2.1: {ex}")
+        print(f"Erreur lors de l'execution de la requete complexe R2.1: {ex}")
         return []
 
     finally:
@@ -263,7 +263,7 @@ def inserer_usager(id, nom, prenom, telephone, courriel, adresse, id_secteur):
         return True
     
     except pyodbc.Error as ex:
-        print(f"Erreur lors de l'appel de la procédure InsererUsager: {ex}")
+        print(f"Erreur lors de l'appel de la procedure InsererUsager: {ex}")
         if conn: conn.rollback()
         return False
     
@@ -304,7 +304,7 @@ def mettre_a_jour_usager(id, nom, prenom, telephone, courriel, adresse, id_secte
         """
         cursor.execute(sql_update, nom, prenom, telephone, courriel, adresse, id_secteur, id)
         conn.commit()
-        print(f"Usager avec ID {id} mis s jour avec succes.")
+        print(f"Usager avec ID {id} mis a jour avec succes.")
         return True
     
     except pyodbc.Error as ex:

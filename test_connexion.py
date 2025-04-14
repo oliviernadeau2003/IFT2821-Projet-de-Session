@@ -54,8 +54,8 @@ except pyodbc.Error as ex:
     print("Exception: ", ex)
 
 finally: # Fermer les ressources dans tous les cas (erreur ou pas)
-    if 'curseur' in locals():
+    if 'curseur' in locals() and curseur:
         curseur.close()            # Curseur existe - a fermer
-    if 'cnxn' in locals():
+    if 'cnxn' in locals() and cnxn:
         cnxn.close()                # Connexion existe - a fermer
 print("\nFermeture du programme.")

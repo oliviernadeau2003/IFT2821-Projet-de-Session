@@ -1,7 +1,7 @@
 --Transact-SQL : Implementation d'au moins un declencheur, une procedure stockee et une fonction
 
 -- Declencheur -- 
-CREATE TRIGGER VerifierTelephoneUsager
+CREATE OR ALTER TRIGGER VerifierTelephoneUsager
 ON Usager
 AFTER INSERT, UPDATE
 AS
@@ -24,7 +24,7 @@ END
 GO
 
 -- Procedure stockee -- 
-CREATE PROCEDURE InsererUsager
+CREATE OR ALTER PROCEDURE InsererUsager
     @id INT,
     @nom VARCHAR(25),
     @prenom VARCHAR(25),
@@ -41,7 +41,7 @@ CREATE PROCEDURE InsererUsager
 GO 
 
 -- Fonction -- 
-CREATE FUNCTION NombreInterventionsParMois 
+CREATE OR ALTER FUNCTION NombreInterventionsParMois 
     (
         @Annee INT,
         @Mois INT

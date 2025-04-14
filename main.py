@@ -23,7 +23,7 @@ def afficher_menu():
     print("12. Mettre a jour un usager (avec trigger de validation)")
     print("13. Obtenir le nombre d'interventions par mois (fonction)")
     print("\n0. Quitter")
-    print("----------------------------------------------------------------------")
+    print("--------------------------------------------------------------------")
 
 # Determine le format d'affichage des donnees
 def formater_usager(usager):

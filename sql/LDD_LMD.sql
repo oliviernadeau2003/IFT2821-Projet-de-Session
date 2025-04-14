@@ -1,4 +1,4 @@
--- Olivier Nadeau, Yonah Lahlou, Ahmadou Ayande, ...
+-- Olivier Nadeau, Yonah Lahlou, Ahmadou Ayande
 -- Definition de la base en LDD et LMD de SQL server/ORACLE
 
 CREATE DATABASE Projet_Centre_Aide;
@@ -67,7 +67,7 @@ CREATE TABLE Intervention(
     date_demande DATETIME NOT NULL,
     date_intervention DATETIME NOT NULL,
     type_aide VARCHAR(50) NOT NULL,
-    status VARCHAR(50) NOT NULL,
+    statut VARCHAR(50) NOT NULL,
     duree INT NULL,
     id_usager INT,
     id_unite INT,
@@ -76,7 +76,7 @@ CREATE TABLE Intervention(
     CONSTRAINT fk_intervention_id_usager FOREIGN KEY (id_usager) REFERENCES Usager(id),
     CONSTRAINT fk_intervention_id_unite FOREIGN KEY (id_unite) REFERENCES Unite(id),
     CONSTRAINT fk_intervention_id_secteur FOREIGN KEY (id_secteur) REFERENCES Secteur(id),
-    CONSTRAINT CHK_Status CHECK (status IN ('Pas encore commence', 'En cours', 'Termine', 'Annule'))
+    CONSTRAINT CHK_statut CHECK (statut IN ('Pas encore commence', 'En cours', 'Termine', 'Annule'))
 );
 
 CREATE TABLE Plainte(
@@ -255,4 +255,53 @@ INSERT INTO Unite (id, est_disponible, id_benevole_1, id_benevole_2, id_secteur,
 (49, 1, 8, 10, 49, 'preformee'),
 (50, 0, 12, NULL, 50, 'a_constituer');
 
--- Note: Les usagers vont etre ajoutes avec la procedure T-SQL et le script ajout_usagers.py
+-- Insertion des Usagers
+INSERT INTO Usager VALUES
+(1, 'Garcia', 'Alejandro', '5141235001', 'alejandro.garcia@email.com', '100 Calle Principal', 1),
+(2, 'Wang', 'Li', '5141235002', 'li.wang@email.com', '200 Nanjing Road', 2),
+(3, 'Dupont', 'Marie', '5141235003', 'marie.dupont@email.com', '300 Rue de Rivoli', 3),
+(4, 'Smith', 'Emma', '5141235004', 'emma.smith@email.com', '400 Baker Street', 4),
+(5, 'Schmidt', 'Hans', '5141235005', 'hans.schmidt@email.com', '500 Berliner Strasse', 5),
+(6, 'Bianchi', 'Giuseppe', '5141235006', 'giuseppe.bianchi@email.com', '600 Via Roma', 6),
+(7, 'Lee', 'Min-Ho', '5141235007', 'minho.lee@email.com', '700 Gangnam Boulevard', 7),
+(8, 'Fernandez', 'Carmen', '5141235008', 'carmen.fernandez@email.com', '800 Plaza Mayor', 8),
+(9, 'Singh', 'Arjun', '5141235009', 'arjun.singh@email.com', '900 Gandhi Road', 9),
+(10, 'Yamamoto', 'Haruki', '5141235010', 'haruki.yamamoto@email.com', '1000 Sakura Street', 10);
+
+-- Note: D'autres usagers vont etre ajoutes avec la procedure T-SQL et le script ajout_usagers.py
+
+-- Insertion des interventions
+INSERT INTO Intervention (id, date_demande, date_intervention, type_aide, statut, duree, id_usager, id_unite, id_secteur) VALUES 
+(1, '2025-04-01', '2025-04-03', 'Aide médicale', 'Termine', 60, 1, 1, 1),
+(2, '2025-04-02', '2025-04-04', 'Livraison repas', 'Termine', 30, 2, 1, 2),
+(3, '2025-04-03', '2025-04-05', 'Visite amicale', 'Annule', NULL, 3, 2, 1),
+(4, '2025-04-04', '2025-04-06', 'Aide ménage', 'Termine', 45, 4, 1, 3),
+(5, '2025-04-05', '2025-04-08', 'Aide médicale', 'En cours', NULL, 5, 3, 2),
+(6, '2025-04-06', '2025-04-09', 'Courses', 'Pas encore commence', NULL, 6, 2, 1),
+(7, '2025-04-07', '2025-04-10', 'Aide ménage', 'Termine', 60, 7, 2, 2),
+(8, '2025-04-08', '2025-04-11', 'Visite amicale', 'En cours', NULL, 8, 1, 3),
+(9, '2025-04-09', '2025-04-12', 'Courses', 'Annule', NULL, 9, 3, 1),
+(10, '2025-04-10', '2025-04-13', 'Aide médicale', 'Termine', 90, 10, 1, 2),
+(11, '2025-04-11', '2025-04-14', 'Livraison repas', 'Termine', 30, 9, 2, 1),
+(12, '2025-04-12', '2025-04-15', 'Visite amicale', 'En cours', NULL, 8, 2, 3),
+(13, '2025-04-13', '2025-04-16', 'Aide ménage', 'Termine', 50, 7, 3, 2),
+(14, '2025-04-14', '2025-04-17', 'Courses', 'Pas encore commence', NULL, 6, 1, 1),
+(15, '2025-04-15', '2025-04-18', 'Aide médicale', 'Termine', 70, 5, 2, 3);
+
+-- Insertion des plaintes
+INSERT INTO Plainte (id, type, description, date_signalement, statut, date_resolution, resolution, id_intervention) VALUES
+(1, 'Retard', 'L’intervenant est arrivé en retard.', '2025-04-04', 'Resolu', '2025-04-05', 'Excuses présentées', 1),
+(2, 'Comportement', 'Manque de politesse de l’intervenant.', '2025-04-05', 'En traitement', NULL, NULL, 2),
+(3, 'Service incomplet', 'L’aide prévue n’a pas été totalement effectuée.', '2025-04-06', 'Ouvert', NULL, NULL, 3),
+(4, 'Retard', 'Intervention annulée sans prévenir.', '2025-04-07', 'Ferme', '2025-04-09', 'Plainte fermée après appel.', 4),
+(5, 'Erreur', 'Mauvais jour d’intervention.', '2025-04-08', 'Resolu', '2025-04-10', 'Planning mis à jour', 5),
+(6, 'Qualité', 'Travail mal effectué.', '2025-04-09', 'Ouvert', NULL, NULL, 6),
+(7, 'Comportement', 'Propos inappropriés.', '2025-04-10', 'En traitement', NULL, NULL, 7),
+(8, 'Retard', '30 minutes de retard.', '2025-04-11', 'Resolu', '2025-04-12', 'Rappel des consignes fait.', 8),
+(9, 'Service incomplet', 'Oubli de documents.', '2025-04-12', 'Ouvert', NULL, NULL, 9),
+(10, 'Qualité', 'Travail bâclé.', '2025-04-13', 'Ferme', '2025-04-14', 'Plainte non fondée.', 10),
+(11, 'Retard', 'Intervenant absent.', '2025-04-14', 'En traitement', NULL, NULL, 11),
+(12, 'Erreur', 'Intervention non demandée.', '2025-04-15', 'Ouvert', NULL, NULL, 12),
+(13, 'Service incomplet', 'Durée trop courte.', '2025-04-16', 'Resolu', '2025-04-17', 'Correction faite.', 13),
+(14, 'Comportement', 'Ton agressif.', '2025-04-17', 'Ferme', '2025-04-18', 'Sanction appliquée.', 14),
+(15, 'Qualité', 'Résultat insatisfaisant.', '2025-04-18', 'Ouvert', NULL, NULL, 15);

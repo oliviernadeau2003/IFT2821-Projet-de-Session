@@ -5,16 +5,6 @@ from src.operations_bd import inserer_usager
 def ajouter_usagers_test():
     # Ajoute des usagers de test dans la base de donnees en utilisant la procedure stockee
     usagers = [
-        (1, "Garcia", "Alejandro", "5141235001", "alejandro.garcia@email.com", "100 Calle Principal", 1),
-        (2, "Wang", "Li", "5141235002", "li.wang@email.com", "200 Nanjing Road", 2),
-        (3, "Dupont", "Marie", "5141235003", "marie.dupont@email.com", "300 Rue de Rivoli", 3),
-        (4, "Smith", "Emma", "5141235004", "emma.smith@email.com", "400 Baker Street", 4),
-        (5, "Schmidt", "Hans", "5141235005", "hans.schmidt@email.com", "500 Berliner Strasse", 5),
-        (6, "Bianchi", "Giuseppe", "5141235006", "giuseppe.bianchi@email.com", "600 Via Roma", 6),
-        (7, "Lee", "Min-Ho", "5141235007", "minho.lee@email.com", "700 Gangnam Boulevard", 7),
-        (8, "Fernandez", "Carmen", "5141235008", "carmen.fernandez@email.com", "800 Plaza Mayor", 8),
-        (9, "Singh", "Arjun", "5141235009", "arjun.singh@email.com", "900 Gandhi Road", 9),
-        (10, "Yamamoto", "Haruki", "5141235010", "haruki.yamamoto@email.com", "1000 Sakura Street", 10),
         (11, "Al-Farsi", "Omar", "5141235011", "omar.alfarsi@email.com", "1100 Al Wasl Road", 11),
         (12, "Kuznetsov", "Anastasia", "5141235012", "anastasia.kuznetsov@email.com", "1200 Nevsky Avenue", 12),
         (13, "Andersson", "Lars", "5141235013", "lars.andersson@email.com", "1300 Stockholm Street", 13),

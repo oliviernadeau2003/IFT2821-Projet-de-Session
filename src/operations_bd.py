@@ -259,7 +259,7 @@ def inserer_usager(id, nom, prenom, telephone, courriel, adresse, id_secteur):
         sql_call = "{CALL InsererUsager (?, ?, ?, ?, ?, ?, ?)}"
         cursor.execute(sql_call, id, nom, prenom, telephone, courriel, adresse, id_secteur)
         conn.commit()
-        print(f"Usager {nom} {prenom} ajoute avec succes.")
+        #print(f"Usager {nom} {prenom} ajoute avec succes.")
         return True
     
     except pyodbc.Error as ex:

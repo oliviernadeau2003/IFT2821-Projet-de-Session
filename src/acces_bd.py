@@ -19,7 +19,7 @@ def get_connexion():
     try:
         connection = pyodbc.connect(CONFIG_BD)
         cursor = connection.cursor()
-        print(f"Connexion reussie a la base de donnees Projet_Centre_Aide")
+        #print(f"Connexion reussie a la base de donnees Projet_Centre_Aide")
         return connection, cursor
 
     except pyodbc.Error as ex:

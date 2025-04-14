@@ -49,7 +49,7 @@ def main():
         conn, cursor = get_connexion()
         cursor.close()
         conn.close()
-        print("Connexion a la base de donnees reussie. Demarrage de l'application...")
+        print("\nConnexion a la base de donnees reussie. Demarrage de l'application...")
     except Exception as e:
         print(f"Erreur de connexion a la base de donnees: {e}")
         print("Impossible de demarrer l'application sans connexion a la base de donnees.")

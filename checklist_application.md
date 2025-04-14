@@ -2,7 +2,7 @@
 
 - [] Lancer **Docker Desktop** > Action > Start ou Terminal `docker start sql-server`
 
-- [] Lancer **Azure Data Studio** > Connecter serveur (au besoin)
+- [] Lancer **Azure Data Studio** > Connecter serveur (au besoin) "YourStrongPassword123!"
 
 - [] Activer l'environnement Python `source sql_app_env/bin/activate`
 

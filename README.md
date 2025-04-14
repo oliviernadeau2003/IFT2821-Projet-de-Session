@@ -26,7 +26,7 @@ Avant de commencer, assurez-vous d'avoir installé les logiciels suivants :
 
 1.  **Cloner le Repository :**
     ```bash
-    git clone <URL_DU_DEPOT> # Remplacez par l'URL de votre Repo Git
+    git clone <URL_DU_REPO> # Remplacez par l'URL de votre Repo Git
     cd IFT2821-Projet-de-Session # Ou le nom du dossier cloné
     ```
 

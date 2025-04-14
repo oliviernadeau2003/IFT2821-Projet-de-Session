@@ -13,9 +13,9 @@ def afficher_menu():
     print("4. Lister les plaintes ouvertes")
     print("5. Lister les usagers par ordre alphabetique")
     print("\n---------------------- Requetes complexes ----------------------")
-    print("6. Interventions avec usagers et equipes de secteurs differents")
+    print("6. Interventions avec usagers et unites de secteurs differents")
     print("7. Details des interventions avec usagers et benevoles")
-    print("8. Interventions par equipes preformees")
+    print("8. Interventions par unites preformees")
     print("9. Details des plaintes ouvertes")
     print("10. Nombre d'interventions par benevole")
     print("\n----------------- Procedures et fonctions T-SQL ----------------")
@@ -111,7 +111,7 @@ def main():
             resultats = operations_bd.interventions_secteurs_differents()
             if resultats:
                 for r in resultats:
-                    print(f"Intervention #{r.id_intervention}: Usager {r.nom_usager} (Secteur: {r.secteur_usager}) - Equipe de secteur: {r.secteur_equipe}")
+                    print(f"Intervention #{r.id_intervention}: Usager {r.nom_usager} (Secteur: {r.secteur_usager}) - Unite de secteur: {r.secteur_unite}")
             else:
                 print("Aucun resultat trouve ou erreur.")
 
@@ -126,12 +126,12 @@ def main():
                 print("Aucun resultat trouve ou erreur.")
 
         elif choix == '8':
-            print("\n-- Interventions par equipes preformees --")
-            resultats = operations_bd.interventions_equipes_preformees()
+            print("\n-- Interventions par unitees preformees --")
+            resultats = operations_bd.interventions_unites_preformees()
             if resultats:
                 for r in resultats:
                     disponibilite = "Disponible" if r.est_disponible else "Non disponible"
-                    print(f"Intervention #{r.id_intervention} ({r.date_intervention}): Usager {r.nom_usager} - Equipe du secteur {r.secteur_equipe} ({disponibilite})")
+                    print(f"Intervention #{r.id_intervention} ({r.date_intervention}): Usager {r.nom_usager} - Unite du secteur {r.secteur_unite} ({disponibilite})")
             else:
                 print("Aucun resultat trouve ou erreur.")
 

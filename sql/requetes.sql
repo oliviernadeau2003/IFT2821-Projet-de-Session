@@ -81,7 +81,9 @@ JOIN Usager ON Intervention.id_usager = Usager.id
 JOIN Secteur AS SecteurUsager ON Usager.id_secteur = SecteurUsager.id
 WHERE Plainte.statut = 'Ouvert';
 
---R2.5 : Ici, on relie Benevole au Secteur puis on joint la table Unite en verifiant si le benevole intervient comme premier ou second membre. Apres, on joint Intervention pour compter l’ensemble des interventions dans lesquelles le benevole a participe.
+--R2.5 : Ici, on relie Benevole au Secteur puis on joint la table Unite en verifiant si le benevole
+-- intervient comme premier ou second membre. Apres, on joint Intervention pour compter l’ensemble des
+-- interventions dans lesquelles le benevole a participe.
 SELECT 
     Benevole.id AS id_benevole,
     Benevole.nom AS nom_benevole,

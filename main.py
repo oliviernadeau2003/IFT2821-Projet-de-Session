@@ -195,7 +195,7 @@ def main():
         elif choix == '13':
             print("\n-- Nombre d'interventions par mois (fonction) --")
             try:
-                annee = int(input("Annee (ex: 2024): "))
+                annee = int(input("\nAnnee (ex: 2024): "))
                 mois = int(input("Mois (1-12): "))
                 
                 if mois < 1 or mois > 12:

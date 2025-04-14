@@ -295,7 +295,7 @@ def inserer_usager(id, nom, prenom, telephone, courriel, adresse, id_secteur):
     except pyodbc.Error as ex:
         print(f"Erreur lors de l'appel de la procedure InsererUsager: {ex}")
         if conn:
-            conn.rollback()
+            conn.rollback() # Restaurer la BD en cas d'erreur
         return False
 
     finally:
@@ -351,7 +351,7 @@ def mettre_a_jour_usager(id, nom, prenom, telephone, courriel, adresse, id_secte
             f"Erreur lors de la mise a jour de l'usager (potentiellement declenchee par le trigger): {ex}"
         )
         if conn:
-            conn.rollback()
+            conn.rollback() # Restaurer la BD en cas d'erreur
         return False
 
     finally:

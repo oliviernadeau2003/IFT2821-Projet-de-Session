@@ -5,25 +5,25 @@ from src.acces_bd import get_connexion
 
 def afficher_menu():
     # Affiche les options disponibles a l'utilisateur
-    print("\n--- Menu Principal - Centre d'Aide ---")
-    print("--- Requetes simples ---")
+    print("\n------------------ CENTRE D'AIDE - MENU PRINCIPAL ------------------")
+    print("\n----------------------- Requetes simples -----------------------")
     print("1. Lister tous les usagers")
     print("2. Lister les benevoles avec voiture")
     print("3. Lister les interventions terminees")
     print("4. Lister les plaintes ouvertes")
     print("5. Lister les usagers par ordre alphabetique")
-    print("--- Requetes complexes ---")
+    print("\n---------------------- Requetes complexes ----------------------")
     print("6. Interventions avec usagers et équipes de secteurs différents")
     print("7. Détails des interventions avec usagers et bénévoles")
     print("8. Interventions par équipes préformées")
     print("9. Détails des plaintes ouvertes")
     print("10. Nombre d'interventions par bénévole")
-    print("--- Procedures et fonctions T-SQL ---")
+    print("\n ---------------- Procedures et fonctions T-SQL ----------------")
     print("11. Ajouter un nouvel usager (procedure stockee)")
     print("12. Mettre a jour un usager (avec trigger de validation)")
     print("13. Obtenir le nombre d'interventions par mois (fonction)")
     print("0. Quitter")
-    print("--------------------------------------")
+    print("----------------------------------------------------------------------")
 
 # Determine le format d'affichage des donnees
 def formater_usager(usager):
@@ -57,7 +57,7 @@ def main():
 
     while True:
         afficher_menu()
-        choix = input("Entrez votre choix : ")
+        choix = input("\nEntrez votre choix : ")
 
         # REQUETES SIMPLES
         if choix == '1':

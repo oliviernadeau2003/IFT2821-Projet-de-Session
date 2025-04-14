@@ -10,6 +10,6 @@
 
 - [x] Créer et peupler la base de données : Exécuter `python3 src/creer_bd.py`
 
-- [] Ajouter des usagers : Exécuter `python3 ajout_usagers.py`
+- [x] Ajouter des usagers : Exécuter `python3 ajout_usagers.py`
 
-- [] Exécuter l'application `python3 main.py`
+- [x] Exécuter l'application `python3 main.py`

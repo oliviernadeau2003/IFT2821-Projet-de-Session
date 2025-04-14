@@ -2,6 +2,8 @@
 
 # IFT2821 Projet Centre d'Aide
 
+Ce projet met en œuvre un système de gestion pour un **Centre d'Aide**. L'application permet de modéliser et de gérer les différentes entités et opérations clés du centre.
+
 #### Membres :
 
 - Olivier Nadeau

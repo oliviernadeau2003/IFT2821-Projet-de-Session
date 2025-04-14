@@ -35,7 +35,7 @@ def formater_benevole(benevole):
 
 def formater_intervention(intervention):
     statut_map = {"Pas encore commence": "Non commence", "En cours": "En cours", "Termine": "Termine", "Annule": "Annule"}
-    statut = statut_map.get(intervention.status, intervention.status)
+    statut = statut_map.get(intervention.statut, intervention.statut)
     return f"ID: {intervention.id}, Date: {intervention.date_intervention}, Type: {intervention.type_aide}, Statut: {statut}"
 
 def formater_plainte(plainte):

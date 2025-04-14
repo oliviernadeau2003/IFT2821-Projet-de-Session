@@ -105,7 +105,7 @@ def completer_insertions():
         for intervention in interventions:
             cursor.execute("""
                 INSERT INTO Intervention 
-                (id, date_demande, date_intervention, type_aide, status, duree, id_usager, id_unite, id_secteur)
+                (id, date_demande, date_intervention, type_aide, statut, duree, id_usager, id_unite, id_secteur)
                 VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)
             """, intervention)
 

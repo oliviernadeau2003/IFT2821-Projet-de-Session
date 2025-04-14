@@ -18,7 +18,7 @@ def creer_base_de_donnees():
 
     try:
         # Se connecter a master avec autocommit=True
-        print("Connexion a la base de donnees master...\n")
+        print("\nConnexion a la base de donnees master...\n")
         master_conn_str = (
             "Driver=ODBC Driver 17 for SQL Server;"    
             "Server=127.0.0.1,1433;"                   
@@ -80,7 +80,7 @@ def creer_base_de_donnees():
                     print(f"Message d'erreur: {e}")
                     connection.rollback()
         
-        print(f"Base de donnees {NOM_BD} creee avec succes!")
+        print(f"Base de donnees {NOM_BD} creee avec succes !")
 
     except Exception as e:
         print(f"Erreur: {e}")

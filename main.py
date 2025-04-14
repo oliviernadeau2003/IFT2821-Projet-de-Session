@@ -18,11 +18,11 @@ def afficher_menu():
     print("8. Interventions par équipes préformées")
     print("9. Détails des plaintes ouvertes")
     print("10. Nombre d'interventions par bénévole")
-    print("\n ---------------- Procedures et fonctions T-SQL ----------------")
+    print("\n----------------- Procedures et fonctions T-SQL ----------------")
     print("11. Ajouter un nouvel usager (procedure stockee)")
     print("12. Mettre a jour un usager (avec trigger de validation)")
     print("13. Obtenir le nombre d'interventions par mois (fonction)")
-    print("0. Quitter")
+    print("\n0. Quitter")
     print("----------------------------------------------------------------------")
 
 # Determine le format d'affichage des donnees
@@ -211,7 +211,7 @@ def main():
                 print("Erreur: L'annee et le mois doivent etre des nombres entiers.")
 
         elif choix == '0':
-            print("Au revoir !")
+            print("\nA la prochaine !")
             break
         
         else:

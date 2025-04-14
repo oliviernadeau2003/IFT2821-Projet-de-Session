@@ -17,8 +17,8 @@ def creer_base_de_donnees():
     cursor = None
 
     try:
-        # 1. Se connecter a master avec autocommit=True
-        print("Connexion a la base de donnees master...")
+        # Se connecter a master avec autocommit=True
+        print("Connexion a la base de donnees master...\n")
         master_conn_str = (
             "Driver=ODBC Driver 17 for SQL Server;"    
             "Server=127.0.0.1,1433;"                   
@@ -29,30 +29,28 @@ def creer_base_de_donnees():
             "PWD=YourStrongPassword123!;"              
             "Connection Timeout=60;"                   
         )
-        # Utiliser autocommit=True pour éviter les transactions implicites
         connection = pyodbc.connect(master_conn_str, autocommit=True)
         cursor = connection.cursor()
         
-        # 2. Supprimer la DB si elle existe
-        print(f"Verification si {NOM_BD} existe...")
+        # Supprimer la DB si elle existe
+        print(f"Verification si {NOM_BD} existe...\n")
         cursor.execute(f"IF EXISTS(SELECT * FROM sys.databases WHERE name='{NOM_BD}') BEGIN ALTER DATABASE [{NOM_BD}] SET SINGLE_USER WITH ROLLBACK IMMEDIATE; DROP DATABASE [{NOM_BD}] END")
         
-        # 3. Creer la nouvelle base de donnees
-        print(f"Creation de la base de donnees {NOM_BD}...")
+        # Creer la nouvelle base de donnees
+        print(f"Creation de la base de donnees {NOM_BD}...\n")
         cursor.execute(f"CREATE DATABASE [{NOM_BD}]")
         
-        # 4. Fermer la connexion a master
+        # Fermer la connexion a master
         cursor.close()
         connection.close()
         
-        # 5. Lire le fichier SQL pour les tables et donnees
-        print(f"Lecture du fichier SQL: {sql_file_path}")
+        # Lire le fichier SQL pour les tables et donnees
         with open(sql_file_path, 'r', encoding='utf-8') as f:
             sql_content = f.read()
         
-        # 6. Se connecter a la nouvelle base
-        print(f"Connexion a {NOM_BD}...")
-        db_conn_str = (
+        # Se connecter a la nouvelle base
+        print(f"Connexion a {NOM_BD}...\n")
+        conn_str_bd = (
             "Driver=ODBC Driver 17 for SQL Server;"    
             "Server=127.0.0.1,1433;"                   
             f"Database={NOM_BD};"
@@ -62,11 +60,11 @@ def creer_base_de_donnees():
             "PWD=YourStrongPassword123!;"              
             "Connection Timeout=60;"
         )
-        connection = pyodbc.connect(db_conn_str)
+        connection = pyodbc.connect(conn_str_bd)
         cursor = connection.cursor()
         
         # 7. Executer les commandes SQL pour creer les tables et inserer les donnees
-        print("Creation des tables et insertion des donnees...")
+        print("Creation des tables et insertion des donnees...\n")
         # Supprimer les commandes CREATE DATABASE et USE de notre script
         sql_content = sql_content.replace(f"CREATE DATABASE {NOM_BD};", "")
         sql_content = sql_content.replace(f"USE {NOM_BD};", "")
@@ -82,7 +80,7 @@ def creer_base_de_donnees():
                     print(f"Message d'erreur: {e}")
                     connection.rollback()
         
-        print(f"\nBase de donnees {NOM_BD} creee avec succes!")
+        print(f"Base de donnees {NOM_BD} creee avec succes!")
 
     except Exception as e:
         print(f"Erreur: {e}")

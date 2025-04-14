@@ -29,8 +29,11 @@ try:
 
 # Test de connexion a la base Projet_Centre_Aide si elle existe
     if 'Projet_Centre_Aide' in bases_donnees:
-        print("\nTentative de connexion a Projet_Centre_Aide...")
+        print("\nTentative de connexion a Projet_Centre_Aide...\n")
+        curseur.close() # Ferme le curseur
         cnxn.close()  # Ferme la connexion actuelle
+        
+        curseur = None # Solution aux problemes de fermeture curseur
         
         config_projet = (
             "Driver={ODBC Driver 17 for SQL Server};"
@@ -44,6 +47,7 @@ try:
         )
         
         cnxn = pyodbc.connect(config_projet)
+        curseur = cnxn.cursor() # Nouveau curseur
         print("Connexion a Projet_Centre_Aide reussie!")
     else:
         print("\nLa base Projet_Centre_Aide n'existe pas encore. Executez creer_bd.py pour la creer.")
@@ -54,8 +58,10 @@ except pyodbc.Error as ex:
     print("Exception: ", ex)
 
 finally: # Fermer les ressources dans tous les cas (erreur ou pas)
-    if 'curseur' in locals() and curseur:
-        curseur.close()            # Curseur existe - a fermer
+    if 'curseur' in locals() and curseur is not None :
+        try:
+            curseur.close()            # Curseur existe - a fermer
+        except:
+            pass
     if 'cnxn' in locals() and cnxn:
         cnxn.close()                # Connexion existe - a fermer
-print("\nFermeture du programme.")

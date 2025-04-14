@@ -6,11 +6,66 @@ import sys
 # Nom de la base de donnees a creer
 NOM_BD = "Projet_Centre_Aide"
 
-# Chemin vers le fichier SQL
+# Chemins vers les fichier SQL
 SQL_FOLDER = 'sql'
 SQL_FILE_NAME = 'LDD_LMD.sql'
+TSQL_FILE_NAME = 'T-SQL.sql'
 script_dir = os.path.dirname(__file__)
 sql_file_path = os.path.join(script_dir, '..', SQL_FOLDER, SQL_FILE_NAME)
+tsql_file_path = os.path.join(script_dir, '..', SQL_FOLDER, TSQL_FILE_NAME)
+
+
+def execute_sql_batch(cursor, connection, sql_batch):
+    # Execute un lot SQL et gere les erreurs
+    if sql_batch.strip():
+        try:
+            cursor.execute(sql_batch)
+            connection.commit()
+            return True
+        except pyodbc.Error as e:
+            print(f"Erreur lors de l'execution de: {sql_batch[:50]}...")
+            print(f"Message d'erreur: {e}")
+            connection.rollback()
+            return False
+
+def tsql_script(connection):
+    # Execute le script T-SQL qui contient les procedures stockees, fonctions et declencheurs
+    cursor = None
+    try:
+        print(f"Execution du script T-SQL (procedures stockees, triggers, fonctions)...\n")
+        
+        # Verifie si le fichier existe
+        if not os.path.exists(tsql_file_path):
+            print(f"Erreur: Le fichier {tsql_file_path} n'existe pas.")
+            return False
+            
+        # Lire le fichier T-SQL
+        with open(tsql_file_path, 'r', encoding='utf-8') as f:
+            tsql_content = f.read()
+            
+        cursor = connection.cursor()
+        
+        # Separe le script par les commandes GO (problematique avec pyodbc)
+        batches = tsql_content.split('GO')
+        success = True
+        for batch in batches:
+            if not execute_sql_batch(cursor, connection, batch):
+                success = False
+                
+        if success:
+            print("Script T-SQL execute avec succes !\n")
+        else:
+            print("Des erreurs sont survenues lors de l'execution du script T-SQL.")
+            
+        return success
+            
+    except Exception as e:
+        print(f"Erreur lors de l'execution du script T-SQL: {e}")
+        return False
+    finally:
+        if cursor:
+            cursor.close()
+
 
 def creer_base_de_donnees():
     connection = None
@@ -79,7 +134,10 @@ def creer_base_de_donnees():
                     print(f"Erreur lors de l'execution de: {statement[:50]}...")
                     print(f"Message d'erreur: {e}")
                     connection.rollback()
-        
+
+        # Executer le script T-SQL pour les procedures stockees, declencheurs et fonctions
+        tsql_script(connection)
+
         print(f"Base de donnees {NOM_BD} creee avec succes !")
 
     except Exception as e:

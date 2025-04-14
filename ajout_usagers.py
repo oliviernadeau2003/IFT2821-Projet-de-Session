@@ -1,5 +1,6 @@
 # ajout_usagers.py
 from src.acces_bd import get_connexion
+from src.operations_bd import inserer_usager
 
 def ajouter_usagers_test():
     # Ajoute des usagers de test dans la base de donnees en utilisant la procedure stockee

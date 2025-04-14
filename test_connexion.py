@@ -23,12 +23,12 @@ try:
     # Recuperer et afficher les bases de donnees existantes
     print("\nBases de donnees disponibles:")
     curseur.execute("SELECT name FROM sys.databases")
-    databases = [row.name for row in curseur.fetchall()]
-    for db in databases:
-        print(f"- {db}")
+    bases_donnees = [row.name for row in curseur.fetchall()]
+    for bd in bases_donnees:
+        print(f"- {bd}")
 
 # Test de connexion a la base Projet_Centre_Aide si elle existe
-    if 'Projet_Centre_Aide' in databases:
+    if 'Projet_Centre_Aide' in bases_donnees:
         print("\nTentative de connexion a Projet_Centre_Aide...")
         cnxn.close()  # Ferme la connexion actuelle
         
@@ -55,7 +55,7 @@ except pyodbc.Error as ex:
 
 finally: # Fermer les ressources dans tous les cas (erreur ou pas)
     if 'curseur' in locals():
-        curseur.close()             # Curseur existe - a fermer
+        curseur.close()            # Curseur existe - a fermer
     if 'cnxn' in locals():
         cnxn.close()                # Connexion existe - a fermer
 print("\nFermeture du programme.")

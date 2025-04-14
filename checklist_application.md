@@ -6,6 +6,8 @@
 
 - [] Activer l'environnement Python `source sql_app_env/bin/activate`
 
+- [] Tester la connexion à la base de donnée `python3 test_connexion.py`
+
 - [] Créer et peupler la base de données : Exécuter `python3 src/creer_bd.py`
 
 - [] Ajouter des usagers : Exécuter `python3 ajout_usagers.py`

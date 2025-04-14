@@ -114,3 +114,4 @@ secrets.yml
 
 # --- Notebooks Jupyter (ignore les checkpoints) ---
 .ipynb_checkpoints
+~$T2821_Projet_Session.docx

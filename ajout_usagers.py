@@ -62,7 +62,7 @@ def ajouter_usagers_test():
         conn, cursor = get_connexion()
         cursor.close()
         conn.close()
-        print("Connexion a la base de donnees reussie.")
+        #print("\nConnexion a la base de donnees reussie.\n")
     except Exception as e:
         print(f"Erreur de connexion: {e}")
         return False
@@ -73,13 +73,13 @@ def ajouter_usagers_test():
         try:
             if inserer_usager(*usager):
                 succes_count += 1
-                print(f"Usager ajoute: {usager[1]} {usager[2]}")
+                #print(f"Usager ajoute: {usager[1]} {usager[2]}")
             else:
                 print(f"Echec de l'ajout pour {usager[1]} {usager[2]}")
         except Exception as e:
             print(f"Erreur lors de l'ajout de {usager[1]} {usager[2]}: {e}")
     
-    print(f"\n{succes_count} usagers sur {len(usagers)} ajoutes avec succes.")
+    print(f"\n{succes_count} usagers sur {len(usagers)} ajoutes avec succes.\n")
     return succes_count == len(usagers)
 
 # Completer les insertions avec des interventions et plaintes

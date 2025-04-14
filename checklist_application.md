@@ -6,8 +6,8 @@
 
 - [] Activer l'environnement Python `source sql_app_env/bin/activate`
 
-- [] Créer et peupler la base de données : Exécuter `python src/creer_bd.py`
+- [] Créer et peupler la base de données : Exécuter `python3 src/creer_bd.py`
 
-- [] Ajouter des usagers : Exécuter `python ajout_usagers.py`
+- [] Ajouter des usagers : Exécuter `python3 ajout_usagers.py`
 
-- [] Exécuter l'application `python main.py`
+- [] Exécuter l'application `python3 main.py`

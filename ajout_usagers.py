@@ -105,13 +105,13 @@ def completer_insertions():
         for intervention in interventions:
             cursor.execute("""
                 INSERT INTO Intervention 
-                (id, date_demande, date_intervention, type_aide, status, duree, id_usager, id_equipe, id_secteur)
+                (id, date_demande, date_intervention, type_aide, status, duree, id_usager, id_unite, id_secteur)
                 VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)
             """, intervention)
 
         # Insere des plaintes
         plaintes = [
-            (1, 'Retard', "L'equipe est arrivee en retard de 30 minutes", '2024-03-04 15:00:00', 'Ouvert', None, None, 1),
+            (1, 'Retard', "L'unite est arrivee en retard de 30 minutes", '2024-03-04 15:00:00', 'Ouvert', None, None, 1),
             (2, 'Qualite du service', 'Travail incomplet', '2024-03-05 16:00:00', 'En traitement', None, None, 2),
             (3, 'Comportement', 'Manque de politesse', '2024-03-06 17:00:00', 'Resolu', '2024-03-10 10:00:00', 'Excuses presentees', 4),
             (4, 'Annulation tardive', 'Intervention annulee a la derniere minute', '2024-03-07 18:00:00', 'Ferme', '2024-03-11 11:00:00', 'Compensation offerte', 5),

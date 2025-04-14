@@ -1,5 +1,4 @@
 # ajout_usagers.py
-from src.operations_bd import inserer_usager
 from src.acces_bd import get_connexion
 
 def ajouter_usagers_test():

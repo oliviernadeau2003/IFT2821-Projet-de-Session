@@ -51,7 +51,7 @@ def lister_interventions_terminees():
     conn, cursor = None, None
     try:
         conn, cursor = get_connexion()
-        sql_query = "SELECT * FROM Intervention WHERE status = 'Termine'"
+        sql_query = "SELECT * FROM Intervention WHERE statut = 'Termine'"
         cursor.execute(sql_query)
         resultats = cursor.fetchall()
         return resultats

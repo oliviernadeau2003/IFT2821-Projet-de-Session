@@ -18,15 +18,15 @@ Avant de commencer, assurez-vous d'avoir installé les logiciels suivants :
 
 * **Docker Desktop :** Pour exécuter le conteneur SQL Server.
 * **Python 3 :** (Version 3.13 ou compatible recommandée, basée sur l'environnement virtuel).
-* **Git :** Pour cloner le dépôt.
+* **Git :** Pour cloner le repository.
 * **ODBC Driver 17 for SQL Server :** Nécessaire pour que `pyodbc` puisse communiquer avec SQL Server.
 * **(Optionnel) Azure Data Studio :** Ou un autre client SQL pour visualiser la base de données.
 
 ## Installation et Configuration Initiale
 
-1.  **Cloner le Dépôt :**
+1.  **Cloner le Repository :**
     ```bash
-    git clone <URL_DU_DEPOT> # Remplacez par l'URL de votre dépôt Git
+    git clone <URL_DU_DEPOT> # Remplacez par l'URL de votre Repo Git
     cd IFT2821-Projet-de-Session # Ou le nom du dossier cloné
     ```
 

@@ -12,91 +12,124 @@ SQL_FILE_NAME = 'LDD_LMD.sql'
 script_dir = os.path.dirname(__file__)
 sql_file_path = os.path.join(script_dir, '..', SQL_FOLDER, SQL_FILE_NAME)
 
-def creer_base_de_donnees():
-    connection = None
-    cursor = None
+def get_master_connection():
+    # Etablit une connexion a la BD master
+    conn_str = (
+        "Driver=ODBC Driver 17 for SQL Server;"    
+        "Server=127.0.0.1,1433;"                   
+        "Database=master;"                       
+        "Encrypt=yes;"                             
+        "TrustServerCertificate=yes;"              
+        "UID=sa;"                                  
+        "PWD=YourStrongPassword123!;"              
+        "Connection Timeout=60;"                   
+    )
+    return pyodbc.connect(conn_str)
 
+def get_db_connection(db_name):
+    # Etablit une connexion a la BD specifique
+    conn_str = (
+        "Driver=ODBC Driver 17 for SQL Server;"    
+        "Server=127.0.0.1,1433;"                   
+        f"Database={db_name};"
+        "Encrypt=yes;"                             
+        "TrustServerCertificate=yes;"              
+        "UID=sa;"                                  
+        "PWD=YourStrongPassword123!;"              
+        "Connection Timeout=60;"
+    )
+    return pyodbc.connect(conn_str)
+
+def creer_base_de_donnees():
+    # Verifier si la base existe et la supprimer si necessaire
     try:
-        # Connexion a master
         print("Connexion a la base de donnees master...")
-        master_conn_str = (
-            "Driver=ODBC Driver 17 for SQL Server;"    
-            "Server=127.0.0.1,1433;"                   
-            "Database=master;"                       
-            "Encrypt=yes;"                             
-            "TrustServerCertificate=yes;"              
-            "UID=sa;"                                  
-            "PWD=YourStrongPassword123!;"              
-            "Connection Timeout=60;"                   
-        )
-        connection = pyodbc.connect(master_conn_str)
-        cursor = connection.cursor()
+        conn = get_master_connection()
+        cursor = conn.cursor()
         
-        # Supprimer la BD si elle existe
+        # Verifier si la base existe
         print(f"Verification si {NOM_BD} existe...")
-        cursor.execute(f"IF EXISTS(SELECT * FROM sys.databases WHERE name='{NOM_BD}') BEGIN ALTER DATABASE [{NOM_BD}] SET SINGLE_USER WITH ROLLBACK IMMEDIATE; DROP DATABASE [{NOM_BD}] END")
-        connection.commit()
+        cursor.execute(f"SELECT name FROM sys.databases WHERE name = '{NOM_BD}'")
+        exists = cursor.fetchone() is not None
         
-        # Creer la nouvelle base de donnees
-        print(f"Creation de la base de donnees {NOM_BD}...")
-        cursor.execute(f"CREATE DATABASE [{NOM_BD}]")
-        connection.commit()
+        if exists:
+            # Supprimer la base
+            cursor.execute(f"DROP DATABASE [{NOM_BD}]")
+            conn.commit()
+            print(f"Base {NOM_BD} supprimee.")
         
-        # Fermer la connexion a master
         cursor.close()
-        connection.close()
+        conn.close()
+    
+    except Exception as e:
+        print(f"Erreur lors de la verification/suppression de la base: {e}")
+        return False
+    
+    # Creer la nouvelle base de donnees (dans une connexion separee)
+    try:
+        print(f"Creation de la base de donnees {NOM_BD}...")
+        conn = get_master_connection()
+        cursor = conn.cursor()
         
-        # Lire le fichier SQL pour les tables et donnees
+        # Creer la base
+        cursor.execute(f"CREATE DATABASE [{NOM_BD}]")
+        conn.commit()
+        print(f"Base {NOM_BD} creee avec succes.")
+        
+        cursor.close()
+        conn.close()
+    except Exception as e:
+        print(f"Erreur lors de la creation de la base: {e}")
+        return False
+    
+    # Lire le script SQL
+    try:
         print(f"Lecture du fichier SQL: {sql_file_path}")
         with open(sql_file_path, 'r', encoding='utf-8') as f:
             sql_content = f.read()
         
-        # Se connecter a la nouvelle base
-        print(f"Connexion a {NOM_BD}...")
-        db_conn_str = (
-            "Driver=ODBC Driver 17 for SQL Server;"    
-            "Server=127.0.0.1,1433;"                   
-            f"Database={NOM_BD};"
-            "Encrypt=yes;"                             
-            "TrustServerCertificate=yes;"              
-            "UID=sa;"                                  
-            "PWD=YourStrongPassword123!;"              
-            "Connection Timeout=60;"
-        )
-        connection = pyodbc.connect(db_conn_str)
-        cursor = connection.cursor()
-        
-        # Executer les commandes SQL pour creer les tables et inserer les donnees
-        print("Creation des tables et insertion des donnees...")
-        # Supprimer les commandes CREATE DATABASE et USE de notre script
+        # Supprimer les commandes CREATE DATABASE et USE
         sql_content = sql_content.replace(f"CREATE DATABASE {NOM_BD};", "")
         sql_content = sql_content.replace(f"USE {NOM_BD};", "")
+    except Exception as e:
+        print(f"Erreur lors de la lecture du fichier SQL: {e}")
+        return False
+    
+    # Executer le script sur la nouvelle base
+    try:
+        print(f"Connexion a {NOM_BD} pour executer le script SQL...")
+        conn = get_db_connection(NOM_BD)
+        cursor = conn.cursor()
         
         # Executer chaque commande SQL individuellement
-        for statement in sql_content.split(';'):
+        print("Creation des tables et insertion des donnees...")
+        
+        statements = sql_content.split(';')
+        total = len(statements)
+        count = 0
+        
+        for statement in statements:
             if statement.strip():
                 try:
                     cursor.execute(statement)
-                    connection.commit()
+                    conn.commit()
+                    count += 1
+                    if count % 10 == 0:  # Afficher progression tous les 10 statements
+                        print(f"Progres: {count}/{total} instructions executees")
                 except pyodbc.Error as e:
                     print(f"Erreur lors de l'execution de: {statement[:50]}...")
                     print(f"Message d'erreur: {e}")
-                    connection.rollback()
+                    # On continue avec les autres instructions
         
-        print(f"\nBase de donnees {NOM_BD} creee avec succes!")
-
+        print(f"\nBase de donnees {NOM_BD} configuree!")
+        
+        cursor.close()
+        conn.close()
+        return True
+    
     except Exception as e:
-        print(f"Erreur: {e}")
-        if connection:
-            try:
-                connection.rollback()
-            except:
-                pass
-    finally:
-        if cursor:
-            cursor.close()
-        if connection:
-            connection.close()
+        print(f"Erreur generale: {e}")
+        return False
 
 if __name__ == "__main__":
     creer_base_de_donnees()

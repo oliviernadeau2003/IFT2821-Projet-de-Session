@@ -26,7 +26,7 @@ FROM Usager
 ORDER BY nom;
 
 -- REQUETES COMPLEXES --
----R2.1 : Afficher les interventions dont l'usager et l'equipe proviennent de secteurs differents.
+---R2.1 : Afficher les interventions dont l'usager et l'unite proviennent de secteurs differents.
 SELECT Intervention.id AS id_intervention,
        Usager.nom AS nom_usager,
        SecteurUsager.nom AS secteur_usager,

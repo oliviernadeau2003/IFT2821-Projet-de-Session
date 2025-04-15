@@ -290,16 +290,16 @@ INSERT INTO Usager VALUES
 
 -- Insertion des plaintes
 -- INSERT INTO Plainte (id, type, description, date_signalement, statut, date_resolution, resolution, id_intervention) VALUES
--- (11, 'Retard', 'L’intervenant est arrive en retard.', '2025-04-04', 'Resolu', '2025-04-05', 'Excuses presentees', 11),
--- (12, 'Comportement', 'Manque de politesse de l’intervenant.', '2025-04-05', 'En traitement', NULL, NULL, 12),
+-- (11, 'Retard', 'L'intervenant est arrive en retard.', '2025-04-04', 'Resolu', '2025-04-05', 'Excuses presentees', 11),
+-- (12, 'Comportement', 'Manque de politesse de l'intervenant.', '2025-04-05', 'En traitement', NULL, NULL, 12),
 -- (13, 'Service incomplet', 'L’aide prevue n’a pas ete totalement effectuee.', '2025-04-06', 'Ouvert', NULL, NULL, 13),
 -- (14, 'Retard', 'Intervention annulee sans prévenir.', '2025-04-07', 'Ferme', '2025-04-09', 'Plainte fermée après appel.', 14),
--- (15, 'Erreur', 'Mauvais jour d’intervention.', '2025-04-08', 'Resolu', '2025-04-10', 'Planning mis à jour', 15),
+-- (15, 'Erreur', 'Mauvais jour d'intervention.', '2025-04-08', 'Resolu', '2025-04-10', 'Planning mis à jour', 15),
 -- (16, 'Qualite', 'Travail mal effectue.', '2025-04-09', 'Ouvert', NULL, NULL, 16),
 -- (17, 'Comportement', 'Propos inappropries.', '2025-04-10', 'En traitement', NULL, NULL, 17),
 -- (18, 'Retard', '30 minutes de retard.', '2025-04-11', 'Resolu', '2025-04-12', 'Rappel des consignes fait.', 18),
 -- (19, 'Service incomplet', 'Oubli de documents.', '2025-04-12', 'Ouvert', NULL, NULL, 19),
--- (20, 'Qualite', 'Travail bâclé.', '2025-04-13', 'Ferme', '2025-04-14', 'Plainte non fondée.', 20),
+-- (20, 'Qualite', 'Travail bacle.', '2025-04-13', 'Ferme', '2025-04-14', 'Plainte non fondée.', 20),
 -- (21, 'Retard', 'Intervenant absent.', '2025-04-14', 'En traitement', NULL, NULL, 21),
 -- (22, 'Erreur', 'Intervention non demandee.', '2025-04-15', 'Ouvert', NULL, NULL, 22),
 -- (23, 'Service incomplet', 'Duree trop courte.', '2025-04-16', 'Resolu', '2025-04-17', 'Correction faite.', 23),

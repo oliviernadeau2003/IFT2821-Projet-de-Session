@@ -293,7 +293,7 @@ INSERT INTO Plainte (id, type, description, date_signalement, statut, date_resol
 (12, 'Comportement', 'Manque de politesse de l’intervenant.', '2025-04-05', 'En traitement', NULL, NULL, 12),
 (13, 'Service incomplet', 'L’aide prevue n’a pas ete totalement effectuee.', '2025-04-06', 'Ouvert', NULL, NULL, 13),
 (14, 'Retard', 'Intervention annulee sans prevenir.', '2025-04-07', 'Ferme', '2025-04-09', 'Plainte fermee après appel.', 14),
-(15, 'Erreur', 'Mauvais jour d’intervention.', '2025-04-08', 'Resolu', '2025-04-10', 'Planning mis à jour', 15),
+(15, 'Erreur', 'Mauvais jour d’intervention.', '2025-04-08', 'Resolu', '2025-04-10', 'Planning mis a jour', 15),
 (16, 'Qualite', 'Travail mal effectue.', '2025-04-09', 'Ouvert', NULL, NULL, 16),
 (17, 'Comportement', 'Propos inappropries.', '2025-04-10', 'En traitement', NULL, NULL, 17),
 (18, 'Retard', '30 minutes de retard.', '2025-04-11', 'Resolu', '2025-04-12', 'Rappel des consignes fait.', 18),

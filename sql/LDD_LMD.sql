@@ -271,37 +271,37 @@ INSERT INTO Usager VALUES
 -- Note: D'autres usagers vont etre ajoutes avec la procedure T-SQL et le script ajout_usagers.py
 
 -- Insertion des interventions
-INSERT INTO Intervention (id, date_demande, date_intervention, type_aide, statut, duree, id_usager, id_unite, id_secteur) VALUES 
-(11, '2025-04-01', '2025-04-03', 'Aide médicale', 'Termine', 60, 1, 1, 1),
-(12, '2025-04-02', '2025-04-04', 'Livraison repas', 'Termine', 30, 2, 1, 2),
-(13, '2025-04-03', '2025-04-05', 'Visite amicale', 'Annule', NULL, 3, 2, 1),
-(14, '2025-04-04', '2025-04-06', 'Aide ménage', 'Termine', 45, 4, 1, 3),
-(15, '2025-04-05', '2025-04-08', 'Aide médicale', 'En cours', NULL, 5, 3, 2),
-(16, '2025-04-06', '2025-04-09', 'Courses', 'Pas encore commence', NULL, 6, 2, 1),
-(17, '2025-04-07', '2025-04-10', 'Aide ménage', 'Termine', 60, 7, 2, 2),
-(18, '2025-04-08', '2025-04-11', 'Visite amicale', 'En cours', NULL, 8, 1, 3),
-(19, '2025-04-09', '2025-04-12', 'Courses', 'Annule', NULL, 9, 3, 1),
-(21, '2025-04-10', '2025-04-13', 'Aide médicale', 'Termine', 90, 10, 1, 2),
-(22, '2025-04-11', '2025-04-14', 'Livraison repas', 'Termine', 30, 9, 2, 1),
-(23, '2025-04-12', '2025-04-15', 'Visite amicale', 'En cours', NULL, 8, 2, 3),
-(24, '2025-04-13', '2025-04-16', 'Aide ménage', 'Termine', 50, 7, 3, 2),
-(25, '2025-04-14', '2025-04-17', 'Courses', 'Pas encore commence', NULL, 6, 1, 1),
-(26, '2025-04-15', '2025-04-18', 'Aide médicale', 'Termine', 70, 5, 2, 3);
+-- INSERT INTO Intervention (id, date_demande, date_intervention, type_aide, statut, duree, id_usager, id_unite, id_secteur) VALUES 
+-- (11, '2025-04-01', '2025-04-03', 'Aide médicale', 'Termine', 60, 1, 1, 1),
+-- (12, '2025-04-02', '2025-04-04', 'Livraison repas', 'Termine', 30, 2, 1, 2),
+-- (13, '2025-04-03', '2025-04-05', 'Visite amicale', 'Annule', NULL, 3, 2, 1),
+-- (14, '2025-04-04', '2025-04-06', 'Aide ménage', 'Termine', 45, 4, 1, 3),
+-- (15, '2025-04-05', '2025-04-08', 'Aide médicale', 'En cours', NULL, 5, 3, 2),
+-- (16, '2025-04-06', '2025-04-09', 'Courses', 'Pas encore commence', NULL, 6, 2, 1),
+-- (17, '2025-04-07', '2025-04-10', 'Aide ménage', 'Termine', 60, 7, 2, 2),
+-- (18, '2025-04-08', '2025-04-11', 'Visite amicale', 'En cours', NULL, 8, 1, 3),
+-- (19, '2025-04-09', '2025-04-12', 'Courses', 'Annule', NULL, 9, 3, 1),
+-- (21, '2025-04-10', '2025-04-13', 'Aide médicale', 'Termine', 90, 10, 1, 2),
+-- (22, '2025-04-11', '2025-04-14', 'Livraison repas', 'Termine', 30, 9, 2, 1),
+-- (23, '2025-04-12', '2025-04-15', 'Visite amicale', 'En cours', NULL, 8, 2, 3),
+-- (24, '2025-04-13', '2025-04-16', 'Aide ménage', 'Termine', 50, 7, 3, 2),
+-- (25, '2025-04-14', '2025-04-17', 'Courses', 'Pas encore commence', NULL, 6, 1, 1),
+-- (26, '2025-04-15', '2025-04-18', 'Aide médicale', 'Termine', 70, 5, 2, 3);
 
 -- Insertion des plaintes
-INSERT INTO Plainte (id, type, description, date_signalement, statut, date_resolution, resolution, id_intervention) VALUES
-(11, 'Retard', 'L’intervenant est arrive en retard.', '2025-04-04', 'Resolu', '2025-04-05', 'Excuses presentees', 11),
-(12, 'Comportement', 'Manque de politesse de l’intervenant.', '2025-04-05', 'En traitement', NULL, NULL, 12),
-(13, 'Service incomplet', 'L’aide prevue n’a pas ete totalement effectuee.', '2025-04-06', 'Ouvert', NULL, NULL, 13),
-(14, 'Retard', 'Intervention annulee sans prévenir.', '2025-04-07', 'Ferme', '2025-04-09', 'Plainte fermée après appel.', 14),
-(15, 'Erreur', 'Mauvais jour d’intervention.', '2025-04-08', 'Resolu', '2025-04-10', 'Planning mis à jour', 15),
-(16, 'Qualite', 'Travail mal effectue.', '2025-04-09', 'Ouvert', NULL, NULL, 16),
-(17, 'Comportement', 'Propos inappropriés.', '2025-04-10', 'En traitement', NULL, NULL, 17),
-(18, 'Retard', '30 minutes de retard.', '2025-04-11', 'Resolu', '2025-04-12', 'Rappel des consignes fait.', 18),
-(19, 'Service incomplet', 'Oubli de documents.', '2025-04-12', 'Ouvert', NULL, NULL, 19),
-(20, 'Qualite', 'Travail bâclé.', '2025-04-13', 'Ferme', '2025-04-14', 'Plainte non fondée.', 20),
-(21, 'Retard', 'Intervenant absent.', '2025-04-14', 'En traitement', NULL, NULL, 21),
-(22, 'Erreur', 'Intervention non demandee.', '2025-04-15', 'Ouvert', NULL, NULL, 22),
-(23, 'Service incomplet', 'Duree trop courte.', '2025-04-16', 'Resolu', '2025-04-17', 'Correction faite.', 23),
-(24, 'Comportement', 'Ton agressif.', '2025-04-17', 'Ferme', '2025-04-18', 'Sanction appliquee.', 24),
-(25, 'Qualité', 'Resultat insatisfaisant.', '2025-04-18', 'Ouvert', NULL, NULL, 25);
+-- INSERT INTO Plainte (id, type, description, date_signalement, statut, date_resolution, resolution, id_intervention) VALUES
+-- (11, 'Retard', 'L’intervenant est arrive en retard.', '2025-04-04', 'Resolu', '2025-04-05', 'Excuses presentees', 11),
+-- (12, 'Comportement', 'Manque de politesse de l’intervenant.', '2025-04-05', 'En traitement', NULL, NULL, 12),
+-- (13, 'Service incomplet', 'L’aide prevue n’a pas ete totalement effectuee.', '2025-04-06', 'Ouvert', NULL, NULL, 13),
+-- (14, 'Retard', 'Intervention annulee sans prévenir.', '2025-04-07', 'Ferme', '2025-04-09', 'Plainte fermée après appel.', 14),
+-- (15, 'Erreur', 'Mauvais jour d’intervention.', '2025-04-08', 'Resolu', '2025-04-10', 'Planning mis à jour', 15),
+-- (16, 'Qualite', 'Travail mal effectue.', '2025-04-09', 'Ouvert', NULL, NULL, 16),
+-- (17, 'Comportement', 'Propos inappropriés.', '2025-04-10', 'En traitement', NULL, NULL, 17),
+-- (18, 'Retard', '30 minutes de retard.', '2025-04-11', 'Resolu', '2025-04-12', 'Rappel des consignes fait.', 18),
+-- (19, 'Service incomplet', 'Oubli de documents.', '2025-04-12', 'Ouvert', NULL, NULL, 19),
+-- (20, 'Qualite', 'Travail bâclé.', '2025-04-13', 'Ferme', '2025-04-14', 'Plainte non fondée.', 20),
+-- (21, 'Retard', 'Intervenant absent.', '2025-04-14', 'En traitement', NULL, NULL, 21),
+-- (22, 'Erreur', 'Intervention non demandee.', '2025-04-15', 'Ouvert', NULL, NULL, 22),
+-- (23, 'Service incomplet', 'Duree trop courte.', '2025-04-16', 'Resolu', '2025-04-17', 'Correction faite.', 23),
+-- (24, 'Comportement', 'Ton agressif.', '2025-04-17', 'Ferme', '2025-04-18', 'Sanction appliquee.', 24),
+-- (25, 'Qualité', 'Resultat insatisfaisant.', '2025-04-18', 'Ouvert', NULL, NULL, 25);

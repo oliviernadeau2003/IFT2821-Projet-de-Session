@@ -1,15 +1,15 @@
 # IFT2821 Projet Centre Aide : Checklist de lancement de l'application
 
-- [] Lancer **Docker Desktop** > Action > Start ou Terminal `docker start sql-server`
+- [x] Lancer **Docker Desktop** > Action > Start ou Terminal `docker start sql-server`
 
-- [] Lancer **Azure Data Studio** > Connecter serveur (au besoin) "YourStrongPassword123!"
+- [x] Lancer **Azure Data Studio** > Connecter serveur (au besoin) "YourStrongPassword123!"
 
-- [] Activer l'environnement Python `source sql_app_env/bin/activate`
+- [x] Activer l'environnement Python `source sql_app_env/bin/activate`
 
-- [] Tester la connexion à la base de donnée `python3 test_connexion.py`
+- [x] Tester la connexion à la base de donnée `python3 test_connexion.py`
 
-- [] Créer et peupler la base de données : Exécuter `python3 src/creer_bd.py`
+- [x] Créer et peupler la base de données : Exécuter `python3 src/creer_bd.py`
 
-- [] Ajouter des usagers : Exécuter `python3 ajout_usagers.py`
+- [x] Ajouter des usagers : Exécuter `python3 ajout_usagers.py`
 
-- [] Exécuter l'application `python3 main.py`
+- [x] Exécuter l'application `python3 main.py`

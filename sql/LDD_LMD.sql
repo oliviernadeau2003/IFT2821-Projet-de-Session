@@ -304,4 +304,4 @@ INSERT INTO Usager VALUES
 -- (22, 'Erreur', 'Intervention non demandee.', '2025-04-15', 'Ouvert', NULL, NULL, 22),
 -- (23, 'Service incomplet', 'Duree trop courte.', '2025-04-16', 'Resolu', '2025-04-17', 'Correction faite.', 23),
 -- (24, 'Comportement', 'Ton agressif.', '2025-04-17', 'Ferme', '2025-04-18', 'Sanction appliquee.', 24),
--- (25, 'Qualité', 'Resultat insatisfaisant.', '2025-04-18', 'Ouvert', NULL, NULL, 25);
+-- (25, 'Qualite', 'Resultat insatisfaisant.', '2025-04-18', 'Ouvert', NULL, NULL, 25);
